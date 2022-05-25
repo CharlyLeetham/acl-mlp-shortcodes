@@ -100,7 +100,7 @@ function acl_localpages_zipcode_page() {
                 'Local Pages Post Codes', // menu link text
                 'manage_options', // capability to access the page
                 'local-pages-zipcodes', // page URL slug
-                'acl-localpages_zipcode_page_content', // callback function /w content
+                'acl_localpages_zipcode_page_content', // callback function /w content
                 'dashicons-star-half', // menu icon
                 5 // priority
         );
