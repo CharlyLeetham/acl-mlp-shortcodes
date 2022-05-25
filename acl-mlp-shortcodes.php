@@ -136,11 +136,11 @@ function acl_localpages_zipcode_page_content() {
     $mydir = plugin_dir_path( __FILE__ );
     switch( $tab ) :
       case 'import-zipcodes':
-          include ( 'mlppluginpath', '/inc/import-zipcodes.php' );
+          include ( 'mlppluginpath'.'/inc/import-zipcodes.php' );
       break;
       default:
 
-      include ( 'mlppluginpath', '/inc/zipcodes-list.php' );
+      include ( 'mlppluginpath'.'/inc/zipcodes-list.php' );
         break;
     endswitch; ?>
     </div>
