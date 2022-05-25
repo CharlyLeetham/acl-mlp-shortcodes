@@ -171,7 +171,7 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
         <th scope="row" valign="top">
                 <label for="mlp_zipcodes"><?php _e('Select Zipcode'); ?></label>
         </th>
-        <?php if ( !empty($zipcodes_records ) ) {
+        <?php if ( !empty($zipcodes_records ) ) { ?>
                           <td>
                                 <select multiple="multiple" id="mlp_zipcodes" name="mlp_cat_zipcode[]" style="width: 100%;">
                                         <?php
