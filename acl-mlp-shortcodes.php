@@ -225,10 +225,10 @@ add_action ( 'edited_category', 'acl_save_mlp_category_zipcode' );
 
 function acl_mlp_custom_scripts() {
 
-        wp_enqueue_style( 'mlp-slick-css', get_stylesheet_directory_uri().'/assets/lib/slick/slick.css');
-        wp_enqueue_style( 'mlp-themes-slick-css', get_stylesheet_directory_uri().'/assets/lib/slick/slick-theme.css');
-        wp_enqueue_script( 'mlp-slick-js', get_stylesheet_directory_uri() . '/assets/lib/slick/slick.min.js', array(), '', true );
-        wp_enqueue_script( 'mlp-slick-init-js', get_stylesheet_directory_uri() . '/assets/js/slick-init.js', array(), '', true );
+        wp_enqueue_style( 'mlp-slick-css', plugin_dir_url( __FILE__ ) .'/assets/lib/slick/slick.css');
+        wp_enqueue_style( 'mlp-themes-slick-css', plugin_dir_url( __FILE__ ) .'/assets/lib/slick/slick-theme.css');
+        wp_enqueue_script( 'mlp-slick-js', plugin_dir_url( __FILE__ ) . '/assets/lib/slick/slick.min.js', array(), '', true );
+        wp_enqueue_script( 'mlp-slick-init-js', plugin_dir_url( __FILE__ ) . '/assets/js/slick-init.js', array(), '', true );
 
       }
 add_action( 'wp_enqueue_scripts', 'acl_mlp_custom_scripts' );
