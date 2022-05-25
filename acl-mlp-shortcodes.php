@@ -171,23 +171,23 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
         <th scope="row" valign="top">
                 <label for="mlp_zipcodes"><?php _e('Select Zipcode'); ?></label>
         </th>
-        <?php if(!empty($zipcodes_records)){ ?>
-                <td>
-                        <select multiple="multiple" id="mlp_zipcodes" name="mlp_cat_zipcode[]" style="width: 100%;">
-                                <?php
-                                        $selected_zipcode = "";
-                                        foreach($zipcodes_records as $zipcode_record) {
-                                                if($tag_zipcode == $zipcode_record[2]){
-                                                        $selected_zipcode = $zipcode_record[2];
-                                                }
-                                ?>
-                                        <option value="<?php echo $zipcode_record[2]; ?>" <?php if (in_array($zipcode_record[2], $tag_zipcode)){echo "selected"; }else{ echo ">";
-                                } ?>
-                        </select><br />
-                        <input type="hidden" name="crrent_zipcode" value="zip_<?php echo $selected_zipcode; ?>_linked">
-                        <span class="description"><?php _e('Select Zipcode to attach with category '); ?></span>
-                </td>
-        <?php } else{ ?>
+        <?php if ( !empty($zipcodes_records ) ) {
+                          <td>
+                                <select multiple="multiple" id="mlp_zipcodes" name="mlp_cat_zipcode[]" style="width: 100%;">
+                                        <?php
+                                                $selected_zipcode = "";
+                                                foreach( $zipcodes_records as $zipcode_record ) {
+                                                        if( $tag_zipcode == $zipcode_record[2] ){
+                                                                $selected_zipcode = $zipcode_record[2];
+                                                        } ?>
+                                                  <option value="<?php echo $zipcode_record[2]; ?>" <?php if ( in_array($zipcode_record[2], $tag_zipcode ) ){echo "selected"; } else { echo ">"; }
+                                                } ?>
+                                </select><br />
+                                <input type="hidden" name="crrent_zipcode" value="zip_<?php echo $selected_zipcode; ?>_linked">
+                                <span class="description"><?php _e('Select Zipcode to attach with category '); ?></span>
+                        </td> ?>
+
+        <?php } else { ?>
                         <select id="mlp_zipcodes" name="mlp_cat_zipcode">
                                         <option >Please Add Zipcodes First</option>
                         </select><br />
