@@ -167,6 +167,9 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
 
         $tag_zipcode = get_option('term_'.$t_id.'_linked');
 
+        echo '<pre>';
+          var_dump ( $tag_zipcode);
+        echo '</pre>';
 
 ?>
 <tr class="form-field">
