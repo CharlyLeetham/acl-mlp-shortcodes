@@ -161,11 +161,8 @@ add_action ( 'category_add_form_fields', 'acl_extra_category_fields');
 function acl_extra_category_fields( $tag ) {    //check for existing featured ID
     $t_id = $tag->term_id;
     //$cat_meta = get_option( "category_$t_id");
-        $zipcodes_records = get_option('zipcodes_rec');
-
-
-
-        $tag_zipcode = get_option('term_'.$t_id.'_linked');
+        $zipcodes_records = get_option( 'zipcodes_rec' );
+        $tag_zipcode = get_option( 'term_'.$t_id.'_linked' );
 
 
 ?>
@@ -173,7 +170,7 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
         <th scope="row" valign="top">
                 <label for="mlp_zipcodes"><?php _e('Select Zipcode'); ?></label>
         </th>
-        <?php if ( !empty($zipcodes_records ) ) {
+        <?php if ( !empty( $zipcodes_records  ) ) {
 
           ?>
                           <td>
@@ -181,18 +178,14 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
                                         <?php
                                                 $selected_zipcode = "";
                                                 foreach( $zipcodes_records as $zipcode_record ) {
-
-                                                  echo '<pre>';
-                                                    var_dump ( $zipcode_record);
-                                                  echo '</pre>';
-                                                        if( $tag_zipcode && ( $tag_zipcode == $zipcode_record["Postcode"] ) ){
-                                                                $selected_zipcode = $zipcode_record["Postcode"];
+                                                        if( $tag_zipcode && ( $tag_zipcode == $zipcode_record[2] ) ){
+                                                                $selected_zipcode = $zipcode_record[2];
                                                         } ?>
-                                                  <option value="<?php echo $zipcode_record["Postcode"]; ?>" <?php if ( $tag_zipcode &&  ( in_array($zipcode_record["Postcode"], $tag_zipcode ) ) ) {echo "selected"; } else { echo ">"; }
+                                                  <option value="<?php echo $zipcode_record[2]; ?>" <?php if ( $tag_zipcode &&  ( in_array( $zipcode_record[2], $tag_zipcode ) ) ) {echo "selected"; } else { echo ">"; }
                                                 } ?>
                                 </select><br />
                                 <input type="hidden" name="crrent_zipcode" value="zip_<?php echo $selected_zipcode; ?>_linked">
-                                <span class="description"><?php _e('Select Zipcode to attach with category '); ?></span>
+                                <span class="description"><?php _e( 'Select Zipcode to attach with category ' ); ?></span>
                         </td> ?>
 
         <?php } else { ?>
