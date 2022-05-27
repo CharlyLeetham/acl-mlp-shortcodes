@@ -167,6 +167,7 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
 
         $tag_zipcode = get_option('term_'.$t_id.'_linked');
 
+
 ?>
 <tr class="form-field">
         <th scope="row" valign="top">
@@ -181,6 +182,10 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
                                                 $selected_zipcode = "";
                                                 foreach( $zipcodes_records as $zipcode_record ) {
 
+                                                  echo '<pre>';
+                                                    var_dump ( $zipcode_record[2]);
+                                                  echo '</pre>';
+                                                  die();
                                                         if( $tag_zipcode && ( $tag_zipcode == $zipcode_record[2] ) ){
                                                                 $selected_zipcode = $zipcode_record[2];
                                                         } ?>
