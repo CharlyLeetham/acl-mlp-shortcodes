@@ -183,7 +183,7 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
                                                 foreach( $zipcodes_records as $zipcode_record ) {
 
                                                   echo '<pre>';
-                                                    var_dump ( $zipcode_record[2]);
+                                                    var_dump ( $zipcode_record);
                                                   echo '</pre>';
                                                   die();
                                                         if( $tag_zipcode && ( $tag_zipcode == $zipcode_record[2] ) ){
