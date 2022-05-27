@@ -176,11 +176,11 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
   				<?php
   					$selected_zipcode = "";
   					foreach($zipcodes_records as $zipcode_record) {
-  						if( $tag_zipcode == $zipcode_record[2] ) {
+  						if($tag_zipcode == $zipcode_record[2]){
   							$selected_zipcode = $zipcode_record[2];
   						}
   				?>
-  					<option value="<?php echo $zipcode_record[2]; ?>" <?php if ( in_array($zipcode_record[], $tag_zipcode){echo "selected"; }else{ echo "";}?>><?php echo $zipcode_record[1]; ?></option>
+  					<option value="<?php echo $zipcode_record[2]; ?>" <?php if ( $tag_zipcode && ( in_array($zipcode_record[2], $tag_zipcode ) ) ){echo "selected"; }else{ echo "";}?>><?php echo $zipcode_record[1]; ?></option>
   				<?php } ?>
   			</select><br />
   			<input type="hidden" name="crrent_zipcode" value="zip_<?php echo $selected_zipcode; ?>_linked">
