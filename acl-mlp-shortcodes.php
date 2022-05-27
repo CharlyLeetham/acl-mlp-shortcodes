@@ -163,6 +163,10 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
     //$cat_meta = get_option( "category_$t_id");
         $zipcodes_records = get_option('zipcodes_rec');
 
+        echo '<pre>';
+          var_dump ( $zipcodes_records);
+        echo '</pre>';
+
         $tag_zipcode = get_option('term_'.$t_id.'_linked');
 
 
