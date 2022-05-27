@@ -178,14 +178,11 @@ function acl_extra_category_fields( $tag ) {    //check for existing featured ID
                                         <?php
                                                 $selected_zipcode = "";
                                                 foreach( $zipcodes_records as $zipcode_record ) {
-                                                    echo '<pre>';
-                                                      var_dump($zipcode_record["Postcode"]);
-                                                    echo '</pre>';
                                                         if( $tag_zipcode && ( $tag_zipcode == $zipcode_record[2] ) ){
                                                                 $selected_zipcode = $zipcode_record[2];
                                                         } ?>
                                                   <option value="<?php echo $zipcode_record["Postcode"]; ?>" <?php if ( $tag_zipcode &&  ( in_array( $zipcode_record["Postcode"], $tag_zipcode ) ) ) { echo "selected"; } else { echo ">"; }
-                                                } ?>
+                                                } echo $zipcode_record["Postcode"]; ?>
                                 </select><br />
                                 <input type="hidden" name="crrent_zipcode" value="zip_<?php echo $selected_zipcode; ?>_linked">
                                 <span class="description"><?php _e( 'Select Zipcode to attach with category ' ); ?></span>
