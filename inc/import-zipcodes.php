@@ -24,7 +24,7 @@ if(isset($_POST['import_zipcodes'])){
 		$csvData = array_map("utf8_encode", $csvData);
 		// Row column length
 		$dataLen = count($csvData);
-		$zipcode = $csvData[4];
+		$zipcode = $csvData[5];
 		$zipcodeResult[$zipcode] = array_combine($header, $csvData);
     }
 	$add_zipcodes_rec = update_option('zipcodes_rec',$zipcodeResult);

@@ -23,67 +23,71 @@ function acl_my_local_pages_posts_callback( $atts ){
                 'type' => 'cat',
                 'max_posts' => 8,
                 'layout' => 'carousel',
-				'heading_type' => '',
                 'sectionheading'=> '',
                 'suburb_pos' => '',
-				'state_pos' => '',
-				'button_label' => '',
-				'button_link'=>'#',
          ), $atts ) );
 
         $crnt_zipcode = $_GET['zip']; //get zipcode from url
         $zipcode_records = get_option( 'zipcodes_rec' ); //get all zipcode records
         $crrent_zipcode_data = $zipcode_records[$crnt_zipcode]; //get crrent zipcode section data
-		   $title_area = $crrent_zipcode_data['Title Area']; //get crrent state
-		   $state_name = $crrent_zipcode_data['State']; //get crrent state
-		$section_cat_id = $crrent_zipcode_data[$section]; //get crrent section cat id
-		
-		if ( $section == 'Title Area' ) {
-			return  '<h1 class="elementor-heading-title elementor-size-default mlp-titlearea"><b>'.$title_area.'</b></h1>';
-
-        }
+        $section_cat_id = $crrent_zipcode_data[$section]; //get crrent section cat id
 
         if ( $type == 'cat' ) {
-				
                 if ( $layout == 'carousel'  ){
 
                         ob_start(  );
-                        require( 'shortcode-layouts/layout_my_local_pages_posts_carousel.php' );
-                        return ob_get_clean();
+                        require_once( 'shortcode-layouts/layout_my_local_pages_posts_carousel.php' );
+                        return ob_get_clean(  );
 
                 } elseif( $layout == 'sidebyside' ){
 
                         ob_start(  );
-                        require( 'shortcode-layouts/layout_my_local_pages_posts_col.php' );
-                        return ob_get_clean();
+                        require_once( 'shortcode-layouts/layout_my_local_pages_posts_col.php' );
+                        return ob_get_clean(  );
 
                 } else {
 
-						
+
                         if ( $section == 'Section 10 middle' ) {
-                                ob_start();
+                                ob_start(  );
                                 require_once( 'shortcode-layouts/layout_my_local_pages_posts_middle_grid.php' );
-                                return ob_get_clean();
+                                return ob_get_clean(  );
 
                         } else{
 
-								ob_start();
-                                require( 'shortcode-layouts/layout_my_local_pages_posts_grid.php' );
-                                return ob_get_clean();
+                                ob_start(  );
+                                require_once( 'shortcode-layouts/layout_my_local_pages_posts_grid.php' );
+                                return ob_get_clean(  );
 
                         }
 
                 }
         } else {
-				if(!empty($section_cat_id)){
-					$ad_split_arr =  explode( " ",$section_cat_id);
-					$ad_id = $ad_split_arr[3];
-					echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );
-				}
-				
+
+                 if ( $section == 'Section 10 left' ) {
+
+                                $ad_split_arr =  explode( " ",$section_cat_id );
+                                $ad_id = $ad_split_arr[3];
+                                //exit;
+                                echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );
+
+                } elseif ( $section == 'Section 10 right' ){
+
+                        $ad_split_arr =  explode( " ",$section_cat_id );
+                                $ad_id = $ad_split_arr[3];
+                                //exit;
+                                echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );
+
+                } else {
+                        $ad_split_arr =  explode( " ",$section_cat_id );
+                                $ad_id = $ad_split_arr[3];
+                                //exit;
+                                echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );
+                }
         }
 }
 add_shortcode( 'my_local_pages_posts' , 'acl_my_local_pages_posts_callback' );
+
 
 /** Post Code functionality **/
 
@@ -157,37 +161,38 @@ add_action ( 'category_add_form_fields', 'acl_extra_category_fields');
 function acl_extra_category_fields( $tag ) {    //check for existing featured ID
     $t_id = $tag->term_id;
     //$cat_meta = get_option( "category_$t_id");
-        $zipcodes_records = get_option( 'zipcodes_rec' );
-        $tag_zipcode = get_option( 'term_'.$t_id.'_linked' );
+        $zipcodes_records = get_option('zipcodes_rec');
+
+        $tag_zipcode = get_option('term_'.$t_id.'_linked');
 
 
 ?>
-  <tr class="form-field">
-  	<th scope="row" valign="top">
-  		<label for="mlp_zipcodes"><?php _e('Select Zipcode'); ?></label>
-  	</th>
-  	<?php if(!empty($zipcodes_records)){ ?>
-  		<td>
-  			<select multiple="multiple" id="mlp_zipcodes" name="mlp_cat_zipcode[]" style="width: 100%;">
-  				<?php
-  					$selected_zipcode = "";
-  					foreach($zipcodes_records as $zipcode_record) {
-  						if($tag_zipcode == $zipcode_record[2]){
-  							$selected_zipcode = $zipcode_record[2];
-  						}
-  				?>
-  					<option value="<?php echo $zipcode_record[2]; ?>" <?php if ( $tag_zipcode && ( in_array($zipcode_record[2], $tag_zipcode ) ) ){echo "selected"; }else{ echo "";}?>><?php echo $zipcode_record["Postcode"]; ?></option>
-  				<?php } ?>
-  			</select><br />
-  			<input type="hidden" name="crrent_zipcode" value="zip_<?php echo $selected_zipcode; ?>_linked">
-  			<span class="description"><?php _e('Select Zipcode to attach with category '); ?></span>
-  		</td>
-  	<?php } else{ ?>
-  			<select id="mlp_zipcodes" name="mlp_cat_zipcode">
-  					<option >Please Add Zipcodes First</option>
-  			</select><br />
-  	<?php } ?>
-  </tr>
+<tr class="form-field">
+        <th scope="row" valign="top">
+                <label for="mlp_zipcodes"><?php _e('Select Zipcode'); ?></label>
+        </th>
+        <?php if ( !empty($zipcodes_records ) ) { ?>
+                          <td>
+                                <select multiple="multiple" id="mlp_zipcodes" name="mlp_cat_zipcode[]" style="width: 100%;">
+                                        <?php
+                                                $selected_zipcode = "";
+                                                foreach( $zipcodes_records as $zipcode_record ) {
+                                                        if( $tag_zipcode == $zipcode_record[2] ){
+                                                                $selected_zipcode = $zipcode_record[2];
+                                                        } ?>
+                                                  <option value="<?php echo $zipcode_record[2]; ?>" <?php if ( in_array($zipcode_record[2], $tag_zipcode ) ){echo "selected"; } else { echo ">"; }
+                                                } ?>
+                                </select><br />
+                                <input type="hidden" name="crrent_zipcode" value="zip_<?php echo $selected_zipcode; ?>_linked">
+                                <span class="description"><?php _e('Select Zipcode to attach with category '); ?></span>
+                        </td> ?>
+
+        <?php } else { ?>
+                        <select id="mlp_zipcodes" name="mlp_cat_zipcode">
+                                        <option >Please Add Zipcodes First</option>
+                        </select><br />
+        <?php } ?>
+</tr>
 <?php
 }
 
@@ -224,7 +229,6 @@ function acl_mlp_custom_scripts() {
         wp_enqueue_style( 'mlp-themes-slick-css', plugin_dir_url( __FILE__ ) .'/assets/lib/slick/slick-theme.css');
         wp_enqueue_script( 'mlp-slick-js', plugin_dir_url( __FILE__ ) . '/assets/lib/slick/slick.min.js', array(), '', true );
         wp_enqueue_script( 'mlp-slick-init-js', plugin_dir_url( __FILE__ ) . '/assets/js/slick-init.js', array(), '', true );
-		wp_enqueue_style( 'acl-mlp-shortcodes-styles', plugin_dir_url( __FILE__ ) . '/assets/css/acl-mlp-shortcodes-styles.css', array(), time(), 'all' );
 
       }
 add_action( 'wp_enqueue_scripts', 'acl_mlp_custom_scripts' );

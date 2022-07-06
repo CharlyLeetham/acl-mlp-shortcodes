@@ -1,5 +1,8 @@
 <?php  if (!defined('ABSPATH')) { exit; } ?>
+
+<?php if(!empty($section_cat_id)){ ?>
 <?php if(!empty($sectionheading)){ ?>
+	<?php //echo "Suburb Position is" .$suburb_pos;?>
 	<?php if(empty($suburb_pos)){ ?>
 		<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php echo $sectionheading; ?></h2>
 	<?php } ?>
@@ -14,20 +17,14 @@
 <?php }?>
 <div class="row">
 	<?php
+	
 		$args = array(
 			'post_type' => 'post',
 			'post_status ' => 'publish',
 			'posts_per_page' => 1,
 			'order' => 'ASC',
 			'orderby' => 'ID',
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'category',
-					'terms' => $section_cat_id,
-					'field' => 'term_id',
-					'operator' => 'IN'
-				)
-			) ,
+			
 		);
 		$wp_query = new WP_Query($args);
 		if ($wp_query->have_posts()):
@@ -57,3 +54,4 @@
 	<?php endif; ?>
 	<?php wp_reset_postdata(); ?>
 </div>
+<?php } ?>

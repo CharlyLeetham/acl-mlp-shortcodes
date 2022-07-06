@@ -3,6 +3,7 @@
         exit; // Exit if accessed directly
     }
 	
+	if(!empty($section_cat_id)){
 	
 ?>
 			<style>
@@ -17,6 +18,7 @@
 				letter-spacing: normal;
 				text-transform: unset;
 				font-family: Lato;
+				min-height: 160px;
 			}
 			.mlp-post-title a{
 				color: #38B449;
@@ -43,10 +45,12 @@
 			{
 				opacity: 1 !important;
 			}
-			span.post-published-date{
+			span.post-published-date,
+			i.fa.fa-calendar{
 				font-size: 12px;
 				color: #777;
 				line-height: 1.5;
+				font-weight: 500;
 			}
 			svg.anwp-pg-icon{
 					display: inline-block;
@@ -61,6 +65,11 @@
 				<div class="mlp-post-container">
 					<div class="mlp-post-slider row">
 						<?php 
+						if( strpos($section_cat_id, ',') !== false ) {
+							 $section_cat_id = explode(',' ,$section_cat_id);
+						}
+						
+					
 							$args = array( 
 								'post_type' => 'post',
 								'post_status ' => 'publish', 
@@ -102,6 +111,9 @@
 								<i class="fa fa-calendar" aria-hidden="true"></i>
 								<span class="post-published-date"><?php echo get_the_date(); ?></span></p>
 							</div>
+							<!---<div class="mlp-post-link">
+								<a href="<?php //echo get_permalink(); ?>">Read More</a>
+							</div>---->
 						</div>
 						<?php endwhile; ?>
 						<?php endif; ?>
@@ -109,3 +121,4 @@
 					</div>
 				</div>
 			</section>
+	<?php } ?>

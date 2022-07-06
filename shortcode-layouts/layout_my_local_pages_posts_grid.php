@@ -1,20 +1,39 @@
 <?php  if (!defined('ABSPATH')) { exit; } ?>
-<?php if(!empty($sectionheading)){ ?>
+<?php 
+if(!empty($section_cat_id)){
+	if(!empty($sectionheading)){ ?>
 	<div class="row">
-		<div class="col-md-6">
-			<?php if(empty($suburb_pos)){ ?>
-			<h2 style="text-align:left" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php echo $sectionheading; ?></h2>
+		<div class="col-md-5">
+			<!----if suburb name is required---->
+			<?php if($heading_type == "suburb"){?>
+				<?php if(empty($suburb_pos)){ ?>
+				<h2 style="text-align:left; font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php echo $sectionheading; ?></h2>
+				<?php } ?>
+				
+				<?php if($suburb_pos == "start"){ ?>
+				<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php echo $_GET['suburb']; ?> <?php echo $sectionheading; ?></h2>
+				<?php } ?>
+				
+				<?php if($suburb_pos == "end"){ ?>
+				<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php echo $sectionheading; ?> <?php echo $_GET['suburb']; ?></h2>
+				<?php } ?>
 			<?php } ?>
-			
-			<?php if($suburb_pos == "start"){ ?>
-			<h2 style="text-align:left" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php echo $_GET['suburb']; ?> <?php echo $sectionheading; ?></h2>
-			<?php } ?>
-			
-			<?php if($suburb_pos == "end"){ ?>
-			<h2 style="text-align:left" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php echo $sectionheading; ?> <?php echo $_GET['suburb']; ?></h2>
+			<!----if state name is required---->
+			<?php if($heading_type == "state"){?>
+				<?php if(empty($state_pos)){ ?>
+				<h2 style="text-align:left; font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php echo $sectionheading; ?></h2>
+				<?php } ?>
+				
+				<?php if($state_pos == "start"){ ?>
+				<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php echo $state_name; ?> <?php echo $sectionheading; ?></h2>
+				<?php } ?>
+				
+				<?php if($state_pos == "end"){ ?>
+				<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php echo $sectionheading; ?> <?php echo $state_name; ?></h2>
+				<?php } ?>
 			<?php } ?>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-7 mlp-divider">
 			<div class="raven-widget-wrapper">
 				<div class="raven-divider">
 					<span class="raven-divider-line raven-divider-solid"></span>
@@ -22,10 +41,28 @@
 			</div>
 		</div>
 	</div>
+	
 <?php }?>
 
+<?php 
+	//echo "Button Label is" .$button_label;
+	if(!empty($button_label)){ ?>
+	<div class="row">
+		<div class="col-md-12 mlp-button-container">
+			<div class="elementor-button-wrapper">
+				<a class="elementor-button elementor-size-sm mlp-custom-link" href="<?php echo $button_link; ?>" role="button"> <span class="elementor-button-content-wrapper">
+					<span class="elementor-button-text"><?php echo $button_label; ?> </span> </span>
+				</a>
+			</div>
+		</div>
+	</div>
+<?php } ?>
+	
 <div class="row">
 	<?php
+	if( strpos($section_cat_id, ',') !== false ) {
+							 $section_cat_id = explode(',' ,$section_cat_id);
+						}
 		$args = array(
 			'post_type' => 'post',
 			'post_status ' => 'publish',
@@ -92,3 +129,4 @@
 	<?php endif; ?>
 	<?php wp_reset_postdata(); ?>
 </div>
+<?php } ?>
