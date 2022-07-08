@@ -149,8 +149,8 @@ function acl_localpages_zipcode_page_content() {
 ****************************************************************************/
 
 //add extra fields to category edit form hook
-add_action ( 'edit_category_form_fields', 'acl_extra_category_fields');
-add_action ( 'category_add_form_fields', 'acl_extra_category_fields');
+//add_action ( 'edit_category_form_fields', 'acl_extra_category_fields');
+//add_action ( 'category_add_form_fields', 'acl_extra_category_fields');
 
 //add extra fields to category edit form callback function
 
