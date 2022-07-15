@@ -23,6 +23,11 @@
 			.mlp-post-title a{
 				color: #38B449;
 			}
+
+      .mlp-post-img {
+        height: 265px;
+      }
+      
 			.slick-dots li {
 				width: 25px !important;
 				height: 25px !important;
