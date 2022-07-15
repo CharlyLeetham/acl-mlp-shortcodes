@@ -1,10 +1,10 @@
-<?php 
+<?php
     if ( ! defined( 'ABSPATH' ) ) {
         exit; // Exit if accessed directly
     }
-	
+
 	if(!empty($section_cat_id)){
-	
+
 ?>
 			<style>
 			.slick-dots li button{
@@ -64,16 +64,16 @@
 			<section class="mlp-post-section">
 				<div class="mlp-post-container">
 					<div class="mlp-post-slider row">
-						<?php 
+						<?php
 						if( strpos($section_cat_id, ',') !== false ) {
 							 $section_cat_id = explode(',' ,$section_cat_id);
 						}
-						
-					
-							$args = array( 
+
+
+							$args = array(
 								'post_type' => 'post',
-								'post_status ' => 'publish', 
-								'posts_per_page' => intval($max_posts), 
+								'post_status ' => 'publish',
+								'posts_per_page' => intval($max_posts),
 								'order'=> 'ASC',
 								'orderby'=>'ID',
 								'tax_query' => array(
@@ -86,23 +86,23 @@
 								),
 							);
 							$wp_query = new WP_Query($args);
-							if( $wp_query->have_posts()):
-							while ($wp_query->have_posts() ) : $wp_query->the_post();
+							if ( $wp_query->have_posts() ):
+							while ( $wp_query->have_posts() ) : $wp_query->the_post();
 							global $post;
-							$slug = $post->post_name;	
-							$fimage = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-							if(!empty($fimage)){
+							$slug = $post->post_name;
+							$fimage = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
+							if ( !empty( $fimage ) ){
 								$f_img = $fimage[0];
-							}else{
+							} else {
 								$f_img = "https://via.placeholder.com/265x150.png?text=Placeholder+Image";
 							}
 						?>
 						<div class="col-xs-12 col-sm-3 col-md-3">
 							<div class="mlp-post-img">
 								<a href="<?php echo get_permalink(); ?>">
-									<img src="<?php echo $f_img; ?>"> 
+									<img src="<?php echo $f_img; ?>">
 								</a>
-							</div>	
+							</div>
 							<div class="mlp-post-title">
 								<a href="<?php echo get_permalink(); ?>">
 									<?php echo get_the_title(); ?>
