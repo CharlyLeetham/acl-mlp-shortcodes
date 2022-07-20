@@ -49,7 +49,7 @@
 	?>
 
 			<div class="col-md-6">
-				<?php if(!empty($video_id)) {?>
+				<?php if ( !empty( $video_id ) ) {?>
 					<iframe src="https://www.youtube.com/embed/<?php echo $video_id; ?>" width="100%" height="350"></iframe>
 				<?php } ?>
 			</div>
@@ -91,7 +91,7 @@
 			?>
 
 					<div class="col-md-6">
-						<?php if(!empty($video_id)) {?>
+						<?php if ( !empty( $video_id )  {?>
 							<iframe src="https://www.youtube.com/embed/<?php echo $video_id; ?>" width="100%" height="350"></iframe>
 						<?php } ?>
 					</div>
