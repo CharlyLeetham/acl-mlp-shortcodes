@@ -1,5 +1,5 @@
 <?php  if (!defined('ABSPATH')) { exit; } ?>
-<?php 
+<?php
 if(!empty($section_cat_id)){
 	if(!empty($sectionheading)){ ?>
 	<div class="row">
@@ -7,29 +7,35 @@ if(!empty($section_cat_id)){
 			<!----if suburb name is required---->
 			<?php if($heading_type == "suburb"){?>
 				<?php if(empty($suburb_pos)){ ?>
-				<h2 style="text-align:left; font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php echo $sectionheading; ?></h2>
+				<h3  class="raven-heading raven-heading-h3 mlp-raven-custom-headin no-suburb" ><span class="raven-heading-title"><?php echo $sectionheading; ?></span></h3>
+				<!-- <h2 style="text-align:left; font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php //echo $sectionheading; ?></h2> -->
 				<?php } ?>
-				
+
 				<?php if($suburb_pos == "start"){ ?>
-				<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php echo $_GET['suburb']; ?> <?php echo $sectionheading; ?></h2>
+				<h3  class="raven-heading raven-heading-h3 suburb-start mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $_GET['suburb']; ?> <?php echo $sectionheading; ?>, <?php echo $state_name; ?></span></h3>
+				<!--<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php //echo $_GET['suburb']; ?> <?php //echo $sectionheading; ?></h2> -->
 				<?php } ?>
-				
+
 				<?php if($suburb_pos == "end"){ ?>
-				<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php echo $sectionheading; ?> <?php echo $_GET['suburb']; ?></h2>
+				<h3  class="raven-heading raven-heading-h3 suburb-end mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $sectionheading; ?> <?php echo $_GET['suburb']; ?>, <?php echo $state_name; ?></span></h3>
+				<!--<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php //echo $sectionheading; ?> <?php //echo $_GET['suburb']; ?></h2> -->
 				<?php } ?>
 			<?php } ?>
 			<!----if state name is required---->
 			<?php if($heading_type == "state"){?>
 				<?php if(empty($state_pos)){ ?>
-				<h2 style="text-align:left; font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php echo $sectionheading; ?></h2>
+				<h3  class="raven-heading raven-heading-h3 mlp-raven-custom-headin no-suburb" ><span class="raven-heading-title"><?php echo $sectionheading; ?></span></h3>
+				<!-- <h2 style="text-align:left; font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php //echo $sectionheading; ?></h2> -->
 				<?php } ?>
-				
+
 				<?php if($state_pos == "start"){ ?>
-				<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php echo $state_name; ?> <?php echo $sectionheading; ?></h2>
+				<h3  class="raven-heading raven-heading-h3 suburb-start mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $state_name; ?>, <?php echo $sectionheading; ?></span></h3>
+				<!-- <h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php //echo $state_name; ?> <?php echo $sectionheading; ?></h2> -->
 				<?php } ?>
-				
+
 				<?php if($state_pos == "end"){ ?>
-				<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php echo $sectionheading; ?> <?php echo $state_name; ?></h2>
+				<h3  class="raven-heading raven-heading-h3 suburb-end mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $sectionheading; ?>, <?php echo $state_name; ?></span></h3>
+				<!--<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php //echo $sectionheading; ?> <?php //echo $state_name; ?></h2>==>
 				<?php } ?>
 			<?php } ?>
 		</div>
@@ -41,10 +47,10 @@ if(!empty($section_cat_id)){
 			</div>
 		</div>
 	</div>
-	
+
 <?php }?>
 
-<?php 
+<?php
 	//echo "Button Label is" .$button_label;
 	if(!empty($button_label)){ ?>
 	<div class="row">
@@ -58,13 +64,13 @@ if(!empty($section_cat_id)){
 	</div>
 <?php } ?>
 <div class="row">
-	
+
 	<div class="col-md-2">
-		<?php 
-			$section_cat_id_left = $crrent_zipcode_data['Section 10 left']; 
+		<?php
+			$section_cat_id_left = $crrent_zipcode_data['Section 10 left'];
 			$ad_split_arr_left =  explode( " ",$section_cat_id_left );
 			$ad_id = $ad_split_arr_left[3];
-			echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );		
+			echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );
 		?>
 	</div>
 	<div class="col-md-8" >
@@ -118,8 +124,8 @@ if(!empty($section_cat_id)){
 							<div class="mylocalpages-post-meta">
 								<a class="raven-post-meta-item raven-post-date" href="https://clients.askcharlyleetham.com/mlpdev/2022/02/" rel="bookmark">
 									<?php echo get_the_date(); ?>
-								</a> 
-								<span class="raven-post-meta-divider">/</span> 
+								</a>
+								<span class="raven-post-meta-divider">/</span>
 								<span class="raven-post-meta-item raven-post-categories">
 									<a href="" rel="tag"><?php echo get_cat_name($section_cat_id); ?></a>
 								</span>
@@ -127,7 +133,7 @@ if(!empty($section_cat_id)){
 							<div class="mylocalpages-post-excerpt">
 								<?php echo get_the_excerpt(); ?>
 							</div>
-							<div class="mylocalpages-post-read-more"> 
+							<div class="mylocalpages-post-read-more">
 								<a class="mylocalpages-post-button" href="<?php echo get_the_permalink(); ?>">
 									<span class="mylocalpages-post-button-text">Read More</span>
 								</a>
@@ -141,11 +147,11 @@ if(!empty($section_cat_id)){
 		</div>
 	</div>
 	<div class="col-md-2">
-		<?php 
-			$section_cat_id_right = $crrent_zipcode_data['Section 10 right']; 
+		<?php
+			$section_cat_id_right = $crrent_zipcode_data['Section 10 right'];
 			$ad_split_arr_right =  explode( " ",$section_cat_id_right );
 			$ad_id = $ad_split_arr_right[3];
-			echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );		
+			echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );
 		?>
 	</div>
 </div>
