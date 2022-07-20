@@ -5,18 +5,18 @@
 	<?php if(empty($suburb_pos)){ ?>
 		<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php echo $sectionheading; ?>,<?php echo $state_name; ?></h2>
 	<?php } ?>
-			
+
 	<?php if($suburb_pos == "start"){ ?>
 		<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php echo $_GET['suburb']; ?> <?php echo $sectionheading; ?>, <?php echo $state_name; ?></h2>
 	<?php } ?>
-			
+
 	<?php if($suburb_pos == "end"){ ?>
 		<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php echo $sectionheading; ?> <?php echo $_GET['suburb']; ?>, <?php echo $state_name; ?></h2>
 	<?php } ?>
 <?php }?>
 <div class="row" style="margin-top: 25px;">
 	<?php
-	
+
 		$args = array(
 			'post_type' => 'post',
 			'post_status ' => 'publish',
@@ -36,7 +36,7 @@
 					'terms'    => $crnt_zipcode,
 				),
 			),
-			
+
 		);
 		$wp_query = new WP_Query($args);
 		if ($wp_query->have_posts()):
@@ -45,7 +45,7 @@
 				global $post;
 				$slug = $post->post_name;
 				$video_id = get_field('featured_video');
-				
+
 	?>
 
 			<div class="col-md-6">
@@ -55,7 +55,7 @@
 			</div>
 			<div class="col-md-6 <?php  echo get_the_ID(); ?>">
 				<?php //echo substr(get_the_content(),0,550); ?>
-				<?php echo get_the_excerpt(); ?>
+				<?php echo get_the_content(); ?>
 			</div>
 	<?php endwhile; ?>
 	<?php else : ?>
@@ -87,7 +87,7 @@
 						global $post;
 						$slug = $post->post_name;
 						$video_id = get_field('featured_video');
-					
+
 			?>
 
 					<div class="col-md-6">
@@ -97,7 +97,7 @@
 					</div>
 					<div class="col-md-6 <?php  echo get_the_ID(); ?>">
 						<?php //echo substr(get_the_content(),0,550); ?>
-						<?php echo get_the_excerpt(); ?>
+						<?php echo get_the_content(); ?>
 					</div>
 			<?php endwhile; ?>
 			<?php else : ?>

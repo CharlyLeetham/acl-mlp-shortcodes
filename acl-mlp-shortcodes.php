@@ -23,7 +23,7 @@ function acl_my_local_pages_posts_callback( $atts ){
                 'type' => 'cat',
                 'max_posts' => 8,
                 'layout' => 'carousel',
-				'heading_type' => '',
+				        'heading_type' => '',
                 'sectionheading'=> '',
                 'suburb_pos' => '',
 				'state_pos' => '',
@@ -31,64 +31,63 @@ function acl_my_local_pages_posts_callback( $atts ){
 				'button_link'=>'#',
          ), $atts ) );
 
-        $crnt_zipcode = $_GET['zip']; //get zipcode from url
-        $zipcode_records = get_option( 'zipcodes_rec' ); //get all zipcode records
-        $crrent_zipcode_data = $zipcode_records[$crnt_zipcode]; //get crrent zipcode section data
+    $crnt_zipcode = $_GET['zip']; //get zipcode from url
+    $zipcode_records = get_option( 'zipcodes_rec' ); //get all zipcode records
+    $crrent_zipcode_data = $zipcode_records[$crnt_zipcode]; //get crrent zipcode section data
 		$title_area = $crrent_zipcode_data['Title Area']; //get crrent state
 		$state_name = $crrent_zipcode_data['State']; //get crrent state
 		$section_cat_id = $crrent_zipcode_data[$section]; //get crrent section cat id
-		
-		
+
+
 		if ( $section == 'Title Area' ) {
 			return  '<h1 class="elementor-heading-title elementor-size-default mlp-titlearea">My Local '.$crnt_zipcode.' - '.$title_area.' Region</h1>';
 		}
-		
-		
-        if ( $type == 'cat' ) {
-				
-                if ( $layout == 'carousel'  ){
 
-                        ob_start(  );
-                        require( 'shortcode-layouts/layout_my_local_pages_posts_carousel.php' );
-                        return ob_get_clean();
 
-                } elseif( $layout == 'sidebyside' ){
+    if ( $type == 'cat' ) {
 
-                        ob_start(  );
-                        require( 'shortcode-layouts/layout_my_local_pages_posts_col.php' );
-                        return ob_get_clean();
+            if ( $layout == 'carousel'  ){
 
-                } else {
+                    ob_start(  );
+                    require( 'shortcode-layouts/layout_my_local_pages_posts_carousel.php' );
+                    return ob_get_clean();
 
-						
-                        if ( $section == 'Section 10 middle' ) {
-                                ob_start();
-                                require_once( 'shortcode-layouts/layout_my_local_pages_posts_middle_grid.php' );
-                                return ob_get_clean();
+            } elseif( $layout == 'sidebyside' ){
 
-                        } else{
+                    ob_start(  );
+                    require( 'shortcode-layouts/layout_my_local_pages_posts_col.php' );
+                    return ob_get_clean();
 
-								ob_start();
-                                require( 'shortcode-layouts/layout_my_local_pages_posts_grid.php' );
-                                return ob_get_clean();
+            } else {
 
-                        }
 
-                }
-        } elseif( $type== 'ad') {
-				if(!empty($section_cat_id)){
-					$ad_split_arr =  explode( " ",$section_cat_id);
-					$ad_id = $ad_split_arr[3];
-					echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );
-				}
-				
-        }else{
-				if ( $section == 'Section 2' ) {
-					
+                    if ( $section == 'Section 10 middle' ) {
+                            ob_start();
+                            require_once( 'shortcode-layouts/layout_my_local_pages_posts_middle_grid.php' );
+                            return ob_get_clean();
+
+                    } else{
+
+						ob_start();
+                            require( 'shortcode-layouts/layout_my_local_pages_posts_grid.php' );
+                            return ob_get_clean();
+
+                    }
+
+            }
+    } elseif ( $type== 'ad') {
+  		if(!empty($section_cat_id)){
+  			$ad_split_arr =  explode( " ",$section_cat_id);
+  			$ad_id = $ad_split_arr[3];
+  			echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );
+  		}
+
+    } else {
+				if ( $type == 'featured' ) {
+
 					 require( 'shortcode-layouts/layout_my_local_pages_featured_post_section.php' );
 				}
 		}
-		
 }
 add_shortcode( 'my_local_pages_posts' , 'acl_my_local_pages_posts_callback' );
 
