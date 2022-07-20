@@ -55,7 +55,7 @@
 			</div>
 			<div class="col-md-6 <?php  echo get_the_ID(); ?>">
 				<?php //echo substr(get_the_content(),0,550); ?>
-				<?php echo get_the_content(); ?>
+				<?php the_content(); ?>
 			</div>
 	<?php endwhile; ?>
 	<?php else : ?>
