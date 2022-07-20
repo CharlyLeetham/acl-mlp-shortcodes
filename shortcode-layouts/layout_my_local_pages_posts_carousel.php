@@ -19,14 +19,14 @@
 				text-transform: unset;
 				font-family: Lato;
 				min-height: 160px;
+				    margin-top: 0.5rem;
 			}
 			.mlp-post-title a{
 				color: #38B449;
 			}
-
-      .mlp-post-img {
-        height: 265px;
-      }
+			.mlp-post-img img {
+				width: 100%;
+			}
       
 			.slick-dots li {
 				width: 25px !important;

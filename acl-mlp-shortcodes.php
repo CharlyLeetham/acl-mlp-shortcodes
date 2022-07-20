@@ -34,15 +34,16 @@ function acl_my_local_pages_posts_callback( $atts ){
         $crnt_zipcode = $_GET['zip']; //get zipcode from url
         $zipcode_records = get_option( 'zipcodes_rec' ); //get all zipcode records
         $crrent_zipcode_data = $zipcode_records[$crnt_zipcode]; //get crrent zipcode section data
-		   $title_area = $crrent_zipcode_data['Title Area']; //get crrent state
-		   $state_name = $crrent_zipcode_data['State']; //get crrent state
+		$title_area = $crrent_zipcode_data['Title Area']; //get crrent state
+		$state_name = $crrent_zipcode_data['State']; //get crrent state
 		$section_cat_id = $crrent_zipcode_data[$section]; //get crrent section cat id
 		
+		
 		if ( $section == 'Title Area' ) {
-			return  '<h1 class="elementor-heading-title elementor-size-default mlp-titlearea"><b>'.$title_area.'</b></h1>';
-
-        }
-
+			return  '<h1 class="elementor-heading-title elementor-size-default mlp-titlearea">My Local '.$crnt_zipcode.' - '.$title_area.' Region</h1>';
+		}
+		
+		
         if ( $type == 'cat' ) {
 				
                 if ( $layout == 'carousel'  ){
@@ -74,14 +75,20 @@ function acl_my_local_pages_posts_callback( $atts ){
                         }
 
                 }
-        } else {
+        } elseif( $type== 'ad') {
 				if(!empty($section_cat_id)){
 					$ad_split_arr =  explode( " ",$section_cat_id);
 					$ad_id = $ad_split_arr[3];
 					echo do_shortcode( '[bsa_pro_ad_space id='.$ad_id.']' );
 				}
 				
-        }
+        }else{
+				if ( $section == 'Section 2' ) {
+					
+					 require( 'shortcode-layouts/layout_my_local_pages_featured_post_section.php' );
+				}
+		}
+		
 }
 add_shortcode( 'my_local_pages_posts' , 'acl_my_local_pages_posts_callback' );
 

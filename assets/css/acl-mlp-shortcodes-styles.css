@@ -1,16 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@500&display=swap');
 h1.mlp-titlearea {
-    color: #D52424;
-    font-family: "Lora", Sans-serif;
-    font-size: 29px;
-    text-align: center;
-}
-.mylocalpages-custom-heading{
-	color: #3E3E3E; 
-	font-size: 29px;
+    color: #3c3c3c !important;
+    font-family: "Lora", sans-serif !important;
+    font-size: 29px !important;
+    width: 100% !important;
+    background-color: white;
 	text-align: center;
-	margin-bottom: 40px !important;
 }
-
+.mylocalpages-custom-heading {
+    color: #232323;
+    font-size: 30px;
+    font-family: Lora;
+	text-align: center;
+}
 .mylocalpages-post-content{
 	
 }
@@ -30,24 +33,28 @@ a.raven-post-title-link {
 }
 .mylocalpages-post-meta{
 	font-family: "Roboto", Sans-serif;
+    margin-bottom: 20px;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 700;
     text-transform: uppercase;
-    color: #CCCCCC;
-	margin-bottom: 20px;
+    line-height: 17px;
+    letter-spacing: .6px;
+    padding: 10px 0 0;
+    color: #ccc;
 }
 .mylocalpages-post-meta a {
     color: #CCCCCC;
 	display: inline;
 }
 .mylocalpages-post-excerpt {
-    font-family: "Roboto", Sans-serif;
+    font-family: roboto,Sans-serif;
     font-size: 12px;
     line-height: 16px;
-    color: #7A7A7A;
+    color: #7a7a7a;
+    font-weight: 400;
 }
 .mylocalpages-post-button {
-    color: var( --e-global-color-primary );
+    color: #000;
     font-family: "Roboto", Sans-serif;
     font-size: 12px;
 }
@@ -56,9 +63,9 @@ span.mylocalpages-post-button-text {
     font-family: roboto,Sans-serif;
     font-size: 12px;
 }
-.mylocalpages-custom-heading {
+/* .mylocalpages-custom-heading {
     text-transform: uppercase;
-}
+} */
 .mlp-divider .raven-divider {
     padding: 15px 0px;
 }
@@ -75,8 +82,35 @@ span.mylocalpages-post-button-text {
 	font-size: 20px !important;
     font-weight: bold !important;
     font-style: normal !important;
-    background-color: var( --e-global-color-accent ) !important;
+    background-color:#31aa39 !important;
     box-shadow: 0 3px 8px #0000005e !important;
-    color: #000 !important;
-    padding: 12px 33px !important;
+    color: white !important;
+    padding: 15px 33px !important;
+}
+.mlp-raven-custom-headin {
+    font-family: roboto,Sans-serif;
+    font-size: 27px;
+    font-weight: 500;
+    color: #000;
+}
+
+.mlp-post-grid:hover {
+    transform: scale(1.1);
+    transition-duration: .3s;
+    transition-property: transform;
+}
+h3.mylocalpages-post-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #000;
+}
+
+h3.mylocalpages-post-title a:hover{
+	color:#000;
+}
+
+.mylocalpages-post-meta a:hover{
+	color: #ccc !important;
 }

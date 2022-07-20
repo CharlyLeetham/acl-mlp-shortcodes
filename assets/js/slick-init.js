@@ -1,4 +1,4 @@
-jQuery(document).ready(function() {
+
 	jQuery('.mlp-post-slider').slick({
 	  dots: true,
 	  arrows: false,
@@ -7,21 +7,28 @@ jQuery(document).ready(function() {
 	  slidesToScroll: 4,
 	  responsive: [
 		{
-		  breakpoint: 320,
+		  breakpoint: 1024,
 		  settings: {
-			arrows: false,
-			centerMode: true,
-			slidesToShow: 1
+			slidesToShow: 3,
+			slidesToScroll: 3,
 		  }
 		},
 		{
 		  breakpoint: 768,
 		  settings: {
-			arrows: false,
-			centerMode: true,
-			slidesToShow: 2
+			slidesToShow: 2,
+			slidesToScroll: 2
+		  }
+		},
+		{
+		  breakpoint: 480,
+		  settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1
 		  }
 		}
+		// You can unslick at a given breakpoint now by adding:
+		// settings: "unslick"
+		// instead of a settings object
 	  ]
 	});
-});
