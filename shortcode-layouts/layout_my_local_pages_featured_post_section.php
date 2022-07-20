@@ -3,15 +3,18 @@
 <?php if(!empty($sectionheading)){ ?>
 	<?php //echo "Suburb Position is" .$suburb_pos;?>
 	<?php if(empty($suburb_pos)){ ?>
-		<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php echo $sectionheading; ?>,<?php echo $state_name; ?></h2>
+		<h3  class="raven-heading raven-heading-h3 mlp-raven-custom-headin no-suburb" ><span class="raven-heading-title"><?php echo $sectionheading; ?>,<?php echo $state_name; ?></span></h3>
+		<!--<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading no-suburb" ><?php //echo $sectionheading; ?>,<?php //echo $state_name; ?></h2>-->
 	<?php } ?>
 
 	<?php if($suburb_pos == "start"){ ?>
-		<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php echo $_GET['suburb']; ?> <?php echo $sectionheading; ?>, <?php echo $state_name; ?></h2>
+		<h3  class="raven-heading raven-heading-h3 suburb-start mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $_GET['suburb']; ?> <?php echo $sectionheading; ?>, <?php echo $state_name; ?></span></h3>
+		<!--<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-start" ><?php //echo $_GET['suburb']; ?> <?php //echo $sectionheading; ?>, <?php //echo $state_name; ?></h2> -->
 	<?php } ?>
 
 	<?php if($suburb_pos == "end"){ ?>
-		<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php echo $sectionheading; ?> <?php echo $_GET['suburb']; ?>, <?php echo $state_name; ?></h2>
+		<h3  class="raven-heading raven-heading-h3 suburb-end mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $sectionheading; ?> <?php echo $_GET['suburb']; ?>, <?php echo $state_name; ?></span></h3>
+		<!--<h2 class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php //echo $sectionheading; ?> <?php //echo $_GET['suburb']; ?>, <?php //echo $state_name; ?></h2> -->
 	<?php } ?>
 <?php }?>
 <div class="row" style="margin-top: 25px;">
