@@ -35,7 +35,7 @@ if(!empty($section_cat_id)){
 
 				<?php if($state_pos == "end"){ ?>
 				<h3  class="raven-heading raven-heading-h3 suburb-end mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $sectionheading; ?>, <?php echo $state_name; ?></span></h3>
-				<!--<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php //echo $sectionheading; ?> <?php //echo $state_name; ?></h2>==>
+				<!--<h2 style="text-align:left;font-weight: 600;" class="elementor-heading-title elementor-size-large mylocalpages-custom-heading suburb-end" ><?php //echo $sectionheading; ?> <?php //echo $state_name; ?></h2>-->
 				<?php } ?>
 			<?php } ?>
 		</div>
