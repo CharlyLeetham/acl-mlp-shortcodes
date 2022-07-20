@@ -1,5 +1,5 @@
 <?php  if (!defined('ABSPATH')) { exit; } ?>
-<?php 
+<?php
 if(!empty($section_cat_id)){
 	if(!empty($sectionheading)){ ?>
 	<div class="row">
@@ -9,11 +9,11 @@ if(!empty($section_cat_id)){
 				<?php if(empty($suburb_pos)){ ?>
 				<h3 class="raven-heading raven-heading-h3 no-suburb mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $sectionheading; ?></span></h3>
 				<?php } ?>
-				
+
 				<?php if($suburb_pos == "start"){ ?>
 				<h3 class="raven-heading raven-heading-h3 suburb-start mlp-raven-custom-headin" > <span class="raven-heading-title"><?php echo $_GET['suburb']; ?> <?php echo $sectionheading; ?></span></h3>
 				<?php } ?>
-				
+
 				<?php if($suburb_pos == "end"){ ?>
 				<h3  class="raven-heading raven-heading-h3 suburb-end mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $sectionheading; ?> <?php echo $_GET['suburb']; ?></span></h3>
 				<?php } ?>
@@ -23,10 +23,10 @@ if(!empty($section_cat_id)){
 				<?php if(empty($state_pos)){ ?>
 				<h3 class="raven-heading raven-heading-h3 no-suburb mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $sectionheading; ?></span></h3>
 				<?php } ?>
-				
+
 				<?php if($state_pos == "start"){ ?>
 				<h3 class="raven-heading raven-heading-h3 suburb-start mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $state_name; ?> <?php echo $sectionheading; ?><span></h3>				<?php } ?>
-				
+
 				<?php if($state_pos == "end"){ ?>
 				<h3  class="raven-heading raven-heading-h3 suburb-end mlp-raven-custom-headin" ><span class="raven-heading-title"><?php echo $sectionheading; ?> <?php echo $state_name; ?></span></h3>
 				<?php } ?>
@@ -40,11 +40,11 @@ if(!empty($section_cat_id)){
 			</div>
 		</div>
 	</div>
-	
+
 <?php }?>
 
-<?php 
-	//echo "Button Label is" .$button_label;
+<?php
+	echo "Button Label is" .$button_label;
 	if(!empty($button_label)){ ?>
 	<div class="row">
 		<div class="col-md-12 mlp-button-container">
@@ -56,7 +56,7 @@ if(!empty($section_cat_id)){
 		</div>
 	</div>
 <?php } ?>
-	
+
 <div class="row">
 	<?php
 	if( strpos($section_cat_id, ',') !== false ) {
@@ -108,8 +108,8 @@ if(!empty($section_cat_id)){
 							<div class="mylocalpages-post-meta">
 								<a class="raven-post-meta-item raven-post-date" href="https://clients.askcharlyleetham.com/mlpdev/2022/02/" rel="bookmark">
 									<?php echo get_the_date(); ?>
-								</a> 
-								<span class="raven-post-meta-divider">/</span> 
+								</a>
+								<span class="raven-post-meta-divider">/</span>
 								<span class="raven-post-meta-item raven-post-categories">
 									<a href="" rel="tag"><?php echo get_cat_name($section_cat_id); ?></a>
 								</span>
@@ -117,7 +117,7 @@ if(!empty($section_cat_id)){
 							<div class="mylocalpages-post-excerpt">
 								<?php echo get_the_excerpt(); ?>
 							</div>
-							<div class="mylocalpages-post-read-more"> 
+							<div class="mylocalpages-post-read-more">
 								<a class="mylocalpages-post-button" href="<?php echo get_the_permalink(); ?>">
 									<span class="mylocalpages-post-button-text">Read More</span>
 								</a>
