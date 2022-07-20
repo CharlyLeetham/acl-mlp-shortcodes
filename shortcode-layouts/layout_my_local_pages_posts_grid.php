@@ -44,7 +44,7 @@ if(!empty($section_cat_id)){
 <?php }?>
 
 <?php
-	echo "Button Label is" .$button_label;
+	//echo "Button Label is" .$button_label;
 	if(!empty($button_label)){ ?>
 	<div class="row">
 		<div class="col-md-12 mlp-button-container">
