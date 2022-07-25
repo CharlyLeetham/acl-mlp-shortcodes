@@ -23,7 +23,7 @@ function acl_my_local_pages_posts_callback( $atts ){
                 'type' => 'cat',
                 'max_posts' => 8,
                 'layout' => 'carousel',
-				        'heading_type' => '',
+				'heading_type' => '',
                 'sectionheading'=> '',
                 'suburb_pos' => '',
 				'state_pos' => '',

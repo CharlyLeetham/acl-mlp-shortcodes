@@ -56,8 +56,7 @@ if(!empty($section_cat_id)){
 		</div>
 	</div>
 <?php } ?>
-
-<div class="row">
+<div class="row mlp-same-height-col">
 	<?php
 	if( strpos($section_cat_id, ',') !== false ) {
 							 $section_cat_id = explode(',' ,$section_cat_id);
