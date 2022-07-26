@@ -123,8 +123,8 @@ if(!empty($section_cat_id)){
 							</div>
 							<div class="mylocalpages-post-excerpt">
 								<?php
-								$new_content = get_the_content();
-								$new_content = strip_tags($new_content, '<img><a><div><p><b><br /><input><form><img><textarea><li><ol><ul><table>');
+								$old_content = get_the_content();
+								$new_content = wp_strip_all_tags( $old_content );
 								echo wp_trim_words( $new_content, 40 ); ?>
 							</div>
 							<div class="mylocalpages-post-read-more">
