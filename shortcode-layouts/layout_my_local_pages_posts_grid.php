@@ -95,7 +95,7 @@ if(!empty($section_cat_id)){
 			<div class="col-md-3 ">
 				<div class="mlp-post-grid .elementor-animation-grow">
 					<div class="col-md-12 .raven-image-fit">
-						<img src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
+						<img fifu-featured="1" src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
 					</div>
 					<div class="col-md-12 <?php  echo get_the_ID(); ?>">
 						<div class="mylocalpages-post-content">
