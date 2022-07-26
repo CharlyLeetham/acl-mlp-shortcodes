@@ -68,7 +68,7 @@
 				fill: #777;
 			}
 
-      .col-xs-12.slick-slide, .col-sm-3.slick-slide, .col-md-3.slick-slide, .col-md-3 {
+      .col-md-3.slick-thumb {
         padding-right: 0;
         padding-left: 0;
         margin-right: 3px;
@@ -111,7 +111,7 @@
 								$f_img = "https://via.placeholder.com/265x150.png?text=Placeholder+Image";
 							}
 						?>
-						<div class="col-xs-12 col-sm-3 col-md-3">
+						<div class="col-xs-12 col-sm-3 col-md-3 slick-thumb">
 							<div class="mlp-post-img <?php echo $post->ID; ?>">
 								<a href="<?php echo get_permalink(); ?>">
 									<img src="<?php echo $f_img; ?>">
