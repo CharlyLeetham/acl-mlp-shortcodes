@@ -24,10 +24,10 @@
 			}
 			.mlp-post-title a{
 				color: #38B449;
-        height: 200px;
 			}
 			.mlp-post-img img {
 				width: 100%;
+        height: 200px;
 			}
 
 			.slick-dots li {
@@ -73,7 +73,7 @@
         padding-left: 0;
         margin-right: 3px;
       }
-            
+
 			</style>
 			<section class="mlp-post-section">
 				<div class="mlp-post-container">
