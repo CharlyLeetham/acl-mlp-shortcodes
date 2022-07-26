@@ -79,7 +79,7 @@
 								'post_type' => 'post',
 								'post_status ' => 'publish',
 								'posts_per_page' => intval($max_posts),
-								'order'=> 'ASC',
+								'order'=> 'DESC',
 								'orderby'=>'ID',
 								'tax_query' => array(
 									array(
