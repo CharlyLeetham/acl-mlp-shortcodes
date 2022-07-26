@@ -122,7 +122,7 @@ if(!empty($section_cat_id)){
 								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
-								<?php echo get_the_excerpt(); ?>
+								<?php echo wp_trim_words( get_the_content(), 40 ); ?>
 							</div>
 							<div class="mylocalpages-post-read-more">
 								<a class="mylocalpages-post-button" href="<?php echo get_the_permalink(); ?>">
