@@ -15,7 +15,7 @@ h1.mlp-titlearea {
 	text-align: center;
 }
 .mylocalpages-post-content{
-	
+
 }
 .mylocalpages-post-title {
     font-family: "Roboto", Sans-serif;
@@ -127,4 +127,10 @@ h3.mylocalpages-post-title a:hover{
 	display: flex;
   flex-direction: column;
       margin-bottom: 5%;
+}
+
+col-xs-12.slick-slide col-sm-3.slick-slide col-md-3.slick-slide {
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: 3px;
 }
