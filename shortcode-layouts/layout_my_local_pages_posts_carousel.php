@@ -27,7 +27,7 @@
 			.mlp-post-img img {
 				width: 100%;
 			}
-      
+
 			.slick-dots li {
 				width: 25px !important;
 				height: 25px !important;
@@ -103,12 +103,12 @@
 							}
 						?>
 						<div class="col-xs-12 col-sm-3 col-md-3">
-							<div class="mlp-post-img">
+							<div class="mlp-post-img <?php echo $post->ID; ?>">
 								<a href="<?php echo get_permalink(); ?>">
 									<img src="<?php echo $f_img; ?>">
 								</a>
 							</div>
-							<div class="mlp-post-title">
+							<div class="mlp-post-title <?php echo $post->ID; ?>">
 								<a href="<?php echo get_permalink(); ?>">
 									<?php echo get_the_title(); ?>
 								</a>
