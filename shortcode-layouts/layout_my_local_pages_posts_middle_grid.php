@@ -129,17 +129,13 @@ if(!empty($section_cat_id)){
 									<?php echo get_the_date(); ?>
 								</a>
 								<span class="raven-post-meta-divider">/</span>
-								<span class="raven-post-meta-item raven-post-categories">
-									<a href="" rel="tag"><?php
-											$acl_categories = get_the_category();//$post->ID
-											foreach($acl_categories as $acl_category){
-												echo $acl_category->name;
-											}
-									 ?></a>
-								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
-								<?php echo get_the_excerpt(); ?>
+								<?php
+								$old_content = get_the_content();
+								$new_content = wp_strip_all_tags( $old_content );
+								$new_content = strip_shortcodes( $new_content );
+								echo wp_trim_words( $new_content, 40 ); ?>
 							</div>
 							<div class="mylocalpages-post-read-more">
 								<a class="mylocalpages-post-button" href="<?php echo get_the_permalink(); ?>">
