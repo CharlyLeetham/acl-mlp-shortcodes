@@ -108,7 +108,7 @@ if(!empty($section_cat_id)){
 								</a>
 							</h3>
 							<div class="mylocalpages-post-meta">
-								<a class="raven-post-meta-item raven-post-date" href="https://clients.askcharlyleetham.com/mlpdev/2022/02/" rel="bookmark">
+								<a class="raven-post-meta-item raven-post-date" href="<?php echo get_month_link('', ''); ?>" rel="bookmark">
 									<?php echo get_the_date(); ?>
 								</a>
 								<span class="raven-post-meta-divider">/</span>
