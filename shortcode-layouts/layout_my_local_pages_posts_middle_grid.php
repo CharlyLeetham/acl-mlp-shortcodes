@@ -111,8 +111,11 @@ if(!empty($section_cat_id)){
 					}
 		?>
 				<div class="col-md-6">
-					<div class="col-md-12">
-						<img src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
+					<div class="col-md-12 .raven-post-image-wrap">
+						<a class="raven-post-image raven-image-fit" href="<?php echo get_the_permalink(); ?>">
+							<img fifu-featured="1" src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
+							<span class="raven-post-image-overlay"></span>
+						</a>
 					</div>
 					<div class="col-md-12 <?php  echo get_the_ID(); ?>">
 						<div class="mylocalpages-post-content">
@@ -122,12 +125,17 @@ if(!empty($section_cat_id)){
 								</a>
 							</h3>
 							<div class="mylocalpages-post-meta">
-								<a class="raven-post-meta-item raven-post-date" href="https://clients.askcharlyleetham.com/mlpdev/2022/02/" rel="bookmark">
+								<a class="raven-post-meta-item raven-post-date" href="<?php echo get_month_link('', ''); ?>" rel="bookmark">
 									<?php echo get_the_date(); ?>
 								</a>
 								<span class="raven-post-meta-divider">/</span>
 								<span class="raven-post-meta-item raven-post-categories">
-									<a href="" rel="tag"><?php echo get_cat_name($section_cat_id); ?></a>
+									<a href="" rel="tag"><?php
+											$acl_categories = get_the_category();//$post->ID
+											foreach($acl_categories as $acl_category){
+												echo $acl_category->name;
+											}
+									 ?></a>
 								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
