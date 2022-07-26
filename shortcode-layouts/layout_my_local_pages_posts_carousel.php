@@ -68,7 +68,7 @@
 				fill: #777;
 			}
 
-      .col-xs-12 .col-sm-3 .col-md-3 {
+      .col-xs-12.slick-slide, .col-sm-3.slick-slide, .col-md-3.slick-slide, .col-md-3 {
         padding-right: 0;
         padding-left: 0;
         margin-right: 3px;
