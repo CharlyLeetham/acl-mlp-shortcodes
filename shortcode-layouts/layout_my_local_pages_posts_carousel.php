@@ -112,9 +112,10 @@
 							}
 						?>
 						<div class="col-xs-12 col-sm-3 col-md-3 slick-thumb">
-							<div class="mlp-post-img <?php echo $post->ID; ?>">
-								<a href="<?php echo get_permalink(); ?>">
+							<div class="mlp-post-img <?php echo $post->ID; ?> raven-post-image-wrap">
+								<a href="<?php echo get_permalink(); ?>" class="raven-post-image raven-image-fit">
 									<img src="<?php echo $f_img; ?>">
+                  <span class="raven-post-image-overlay"></span>
 								</a>
 							</div>
 							<div class="mlp-post-title <?php echo $post->ID; ?>">

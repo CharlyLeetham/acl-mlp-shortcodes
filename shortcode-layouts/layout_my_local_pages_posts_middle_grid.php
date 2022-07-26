@@ -111,7 +111,7 @@ if(!empty($section_cat_id)){
 					}
 		?>
 				<div class="col-md-6">
-					<div class="col-md-12 .raven-post-image-wrap">
+					<div class="col-md-12 raven-post-image-wrap">
 						<a class="raven-post-image raven-image-fit" href="<?php echo get_the_permalink(); ?>">
 							<img fifu-featured="1" src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
 							<span class="raven-post-image-overlay"></span>
