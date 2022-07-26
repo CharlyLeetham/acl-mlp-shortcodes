@@ -93,9 +93,12 @@ if(!empty($section_cat_id)){
 				}
 	?>
 			<div class="col-md-3 ">
-				<div class="mlp-post-grid .elementor-animation-grow">
-					<div class="col-md-12 .raven-image-fit">
-						<img fifu-featured="1" src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
+				<div class="mlp-post-grid .raven-post .elementor-animation-grow">
+					<div class="col-md-12 .raven-post-image-wrap">
+						<a class="raven-post-image raven-image-fit" href="<?php echo get_the_permalink(); ?>">
+							<img fifu-featured="1" src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
+							<span class="raven-post-image-overlay"></span>
+						</a>
 					</div>
 					<div class="col-md-12 <?php  echo get_the_ID(); ?>">
 						<div class="mylocalpages-post-content">
