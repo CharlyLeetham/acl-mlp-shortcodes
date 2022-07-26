@@ -113,7 +113,12 @@ if(!empty($section_cat_id)){
 								</a>
 								<span class="raven-post-meta-divider">/</span>
 								<span class="raven-post-meta-item raven-post-categories">
-									<a href="" rel="tag"><?php echo $section_cat_id.' '.get_cat_name($section_cat_id); ?></a>
+									<a href="" rel="tag"><?php
+											$acl_categories = get_the_category();//$post->ID
+											foreach($acl_categories as $acl_category){
+												echo $acl_category->name;
+											}
+									 ?></a>
 								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
