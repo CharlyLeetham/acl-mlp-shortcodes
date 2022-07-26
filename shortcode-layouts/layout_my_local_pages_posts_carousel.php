@@ -7,6 +7,7 @@
 
 ?>
 			<style>
+
 			.slick-dots li button{
 				box-shadow: none !important;
 			}
@@ -23,6 +24,7 @@
 			}
 			.mlp-post-title a{
 				color: #38B449;
+        height: 200px;
 			}
 			.mlp-post-img img {
 				width: 100%;
@@ -65,6 +67,13 @@
 				stroke: none;
 				fill: #777;
 			}
+
+      col-xs-12.slick-slide col-sm-3.slick-slide col-md-3.slick-slide {
+        padding-right: 0;
+        padding-left: 0;
+        margin-right: 3px;
+      }
+            
 			</style>
 			<section class="mlp-post-section">
 				<div class="mlp-post-container">

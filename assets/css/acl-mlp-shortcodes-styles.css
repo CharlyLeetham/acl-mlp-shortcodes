@@ -128,9 +128,3 @@ h3.mylocalpages-post-title a:hover{
   flex-direction: column;
       margin-bottom: 5%;
 }
-
-col-xs-12.slick-slide col-sm-3.slick-slide col-md-3.slick-slide {
-  padding-right: 0;
-  padding-left: 0;
-  margin-right: 3px;
-}
