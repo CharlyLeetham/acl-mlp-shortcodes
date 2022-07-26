@@ -113,7 +113,7 @@ if(!empty($section_cat_id)){
 								</a>
 								<span class="raven-post-meta-divider">/</span>
 								<span class="raven-post-meta-item raven-post-categories">
-									<a href="" rel="tag"><?php echo get_cat_name($section_cat_id); ?></a>
+									<a href="" rel="tag"><?php echo $section_cat_id.' '.get_cat_name($section_cat_id); ?></a>
 								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
