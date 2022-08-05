@@ -72,13 +72,15 @@ if(!empty($section_cat_id)){
 				array(
 					'taxonomy' => 'category',
 					'terms' => $section_cat_id,
-					'field' => 'id',
-					// 'field' => 'term_id',
+					// 'field' => 'id',
+					'field' => 'term_id',
 					'operator' => 'IN'
 				)
 			) ,
 		);
 		$wp_query = new WP_Query($args);
+
+		var_dump ($wp_query);
 		if ($wp_query->have_posts()):
 			while ($wp_query->have_posts()):
 				$wp_query->the_post();
