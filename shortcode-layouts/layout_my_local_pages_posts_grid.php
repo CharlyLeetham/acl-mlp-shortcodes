@@ -61,6 +61,8 @@ if(!empty($section_cat_id)){
 	if( strpos($section_cat_id, ',') !== false ) {
 							 $section_cat_id = explode(',' ,$section_cat_id);
 						}
+						var_dump ( $section_cat_id );
+
 		$args = array(
 			'post_type' => 'post',
 			'post_status ' => 'publish',
@@ -93,8 +95,8 @@ if(!empty($section_cat_id)){
 				}
 	?>
 			<div class="col-md-3 ">
-				<div class="mlp-post-grid .raven-post .elementor-animation-grow">
-					<div class="col-md-12 .raven-post-image-wrap">
+				<div class="mlp-post-grid raven-post elementor-animation-grow">
+					<div class="col-md-12 raven-post-image-wrap">
 						<a class="raven-post-image raven-image-fit" href="<?php echo get_the_permalink(); ?>">
 							<img fifu-featured="1" src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
 							<span class="raven-post-image-overlay"></span>
