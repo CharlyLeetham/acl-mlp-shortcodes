@@ -72,7 +72,8 @@ if(!empty($section_cat_id)){
 				array(
 					'taxonomy' => 'category',
 					'terms' => $section_cat_id,
-					'field' => 'term_id',
+					'field' => 'id',
+					// 'field' => 'term_id',
 					'operator' => 'IN'
 				)
 			) ,
