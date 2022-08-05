@@ -61,7 +61,6 @@ if(!empty($section_cat_id)){
 	if( strpos($section_cat_id, ',') !== false ) {
 							 $section_cat_id = explode(',' ,$section_cat_id);
 						}
-						var_dump ( $section_cat_id );
 
 		$args = array(
 			'post_type' => 'post',
