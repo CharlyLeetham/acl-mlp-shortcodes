@@ -34,9 +34,9 @@ function acl_my_local_pages_posts_callback( $atts ){
     $crnt_zipcode = $_GET['zip']; //get zipcode from url
     $zipcode_records = get_option( 'zipcodes_rec' ); //get all zipcode records
     $crrent_zipcode_data = $zipcode_records[$crnt_zipcode]; //get crrent zipcode section data
-		$title_area = $crrent_zipcode_data['Title Area']; //get crrent state
-		$state_name = $crrent_zipcode_data['State']; //get crrent state
-		$section_cat_id = $crrent_zipcode_data[$section]; //get crrent section cat id
+	$title_area = $crrent_zipcode_data['Title Area']; //get crrent state
+	$state_name = $crrent_zipcode_data['State']; //get crrent state
+	$section_cat_id = $crrent_zipcode_data[$section]; //get crrent section cat id
 
 
 		if ( $section == 'Title Area' ) {
@@ -234,3 +234,6 @@ function acl_mlp_custom_scripts() {
 
       }
 add_action( 'wp_enqueue_scripts', 'acl_mlp_custom_scripts' );
+
+
+

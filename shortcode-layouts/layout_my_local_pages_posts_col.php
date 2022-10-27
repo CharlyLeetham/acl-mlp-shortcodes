@@ -19,7 +19,7 @@
 <?php }?>
 <div class="row col-template" style="margin-top: 25px;">
 	<?php
-
+		
 		$args = array(
 			'post_type' => 'post',
 			'post_status ' => 'publish',

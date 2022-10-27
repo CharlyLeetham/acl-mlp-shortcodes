@@ -73,8 +73,8 @@
 						if( strpos($section_cat_id, ',') !== false ) {
 							 $section_cat_id = explode(',' ,$section_cat_id);
 						}
-
-
+						
+						if(count($section_cat_id) > 1){
 							$args = array(
 								'post_type' => 'post',
 								'post_status ' => 'publish',
@@ -84,13 +84,18 @@
 								'tax_query' => array(
 									array(
 										'taxonomy' => 'category',
-										'terms' => $section_cat_id,
+										'terms' => array($section_cat_id[0]),
 										'field' => 'term_id',
 										'operator' => 'IN'
 									)
 								),
 							);
 							$wp_query = new WP_Query($args);
+						}
+
+
+							
+							
 							if ( $wp_query->have_posts() ):
 							while ( $wp_query->have_posts() ) : $wp_query->the_post();
 							global $post;
