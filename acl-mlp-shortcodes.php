@@ -3,13 +3,14 @@
 Plugin Name: ACL MLP Shortcodes
 Plugin URI: http://askcharlyleetham.com
 Description: Shortcode query to use with Elementor to display dynamic templates
-Version: 1.0
+Version: 1.1
 Author: Sam
 Author URI: http://askcharlyleetham.com
 License: GPL
 
 Changelog
 Version 1.0 - Original Version
+Version 1.1 - When multiple categories are provided, the subsequent categories are only queried if there are insufficient posts in the first categories.
 */
 
 
