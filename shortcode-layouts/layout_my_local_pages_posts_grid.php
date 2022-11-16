@@ -59,30 +59,69 @@ if(!empty($section_cat_id)){
 <div class="row mlp-same-height-col">
 	<?php
 	if( strpos($section_cat_id, ',') !== false ) {
-							 $section_cat_id = explode(',' ,$section_cat_id);
+		$section_cat_id = explode(',' ,$section_cat_id);
+	}
+	
+		$queried_posts = array();
+		
+		if(is_array($section_cat_id)&& count($section_cat_id) > 1){
+			
+				foreach($section_cat_id as $cat_id){
+					$args = array(
+						'post_type' => 'post',
+						'post_status ' => 'publish',
+						'posts_per_page' => intval($max_posts),
+						'order' => 'DESC',
+						'orderby' => 'ID',
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'category',
+								'terms' => array($cat_id),
+								'field' => 'term_id',
+								'operator' => 'IN'
+							)
+						) ,
+					);
+					$wp_chck_query = new WP_Query($args);
+					
+					if($wp_chck_query->found_posts > 0){
+						//echo "Post Found for category".$cat_id. 'is' .$wp_chck_query->found_posts;
+						if(count($queried_posts) !== intval($max_posts)){
+							//array_merge($queried_posts,$wp_chck_query->posts); 
+							$queried_posts = $queried_posts + $wp_chck_query->posts;
 						}
-		$args = array(
-			'post_type' => 'post',
-			'post_status ' => 'publish',
-			'posts_per_page' => intval($max_posts),
-			'order' => 'ASC',
-			'orderby' => 'ID',
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'category',
-					'terms' => $section_cat_id,
-					'field' => 'term_id',
-					'operator' => 'IN'
-				)
-			) ,
-		);
-		$wp_query = new WP_Query($args);
-		if ($wp_query->have_posts()):
-			while ($wp_query->have_posts()):
-				$wp_query->the_post();
-				global $post;
-				$slug = $post->post_name;
-				$fimage = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID) , 'full');
+					}
+					
+				}
+			}else{ 
+			
+				$args = array(
+					'post_type' => 'post',
+					'post_status ' => 'publish',
+					'posts_per_page' => intval($max_posts),
+					'order' => 'DESC',
+					'orderby' => 'ID',
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'category',
+							'terms' => $section_cat_id,
+							'field' => 'term_id',
+							'operator' => 'IN'
+						)
+					) ,
+				);
+				$wp_query = new WP_Query($args);
+				$queried_posts = $queried_posts + $wp_query->posts;
+				//array_push($queried_posts, $wp_query->posts[0]);
+				
+			}
+		
+		/* echo "<pre>";
+		print_r($queried_posts);
+		exit; */
+		if(!empty($queried_posts)){
+			foreach($queried_posts as $queried_post){
+				$fimage = wp_get_attachment_image_src(get_post_thumbnail_id($queried_post->ID) , 'full');
 				if (!empty($fimage))
 				{
 					$f_img = $fimage[0];
@@ -95,29 +134,30 @@ if(!empty($section_cat_id)){
 			<div class="col-md-3 ">
 				<div class="mlp-post-grid">
 					<div class="col-md-12">
-						<img src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
+						<img src="<?php  echo $f_img; ?>" alt="<?php echo $queried_post->post_title; ?>">
 					</div>
-					<div class="col-md-12 <?php  echo get_the_ID(); ?>">
+					<div class="col-md-12 <?php  echo $queried_post->ID; ?>">
 						<div class="mylocalpages-post-content">
 							<h3 class="mylocalpages-post-title">
-								<a class="raven-post-title-link" href="<?php echo get_the_permalink(); ?>">
-									<?php echo get_the_title();?>
+								<a class="raven-post-title-link" href="<?php echo get_the_permalink($queried_post->ID); ?>">
+									<?php echo $queried_post->post_title;?>
 								</a>
 							</h3>
 							<div class="mylocalpages-post-meta">
-								<a class="raven-post-meta-item raven-post-date" href="https://clients.askcharlyleetham.com/mlpdev/2022/02/" rel="bookmark">
-									<?php echo get_the_date(); ?>
+								<a class="raven-post-meta-item raven-post-date" href="#" rel="bookmark">
+									<?php //echo get_the_date($queried_post->ID); ?>
+									<?php echo get_the_date(get_option( 'date_format' ), $queried_post->ID); ?>
 								</a>
 								<span class="raven-post-meta-divider">/</span>
 								<span class="raven-post-meta-item raven-post-categories">
-									<a href="" rel="tag"><?php echo get_cat_name($section_cat_id); ?></a>
+									<a href="" rel="tag"><?php echo get_post_categories($queried_post->ID); ?></a>
 								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
-								<?php echo get_the_excerpt(); ?>
+								<?php echo $queried_post->post_excerpt; ?>
 							</div>
 							<div class="mylocalpages-post-read-more">
-								<a class="mylocalpages-post-button" href="<?php echo get_the_permalink(); ?>">
+								<a class="mylocalpages-post-button" href="<?php echo get_the_permalink($queried_post->ID); ?>">
 									<span class="mylocalpages-post-button-text">Read More</span>
 								</a>
 							</div>
@@ -125,8 +165,8 @@ if(!empty($section_cat_id)){
 					</div>
 				</div>
 			</div>
-	<?php endwhile; ?>
-	<?php endif; ?>
+		<?php } ?>
+	<?php } ?>
 	<?php wp_reset_postdata(); ?>
 </div>
 <?php } ?>

@@ -68,67 +68,100 @@
 			</style>
 			<section class="mlp-post-section">
 				<div class="mlp-post-container">
-					<div class="mlp-post-slider row">
+					
 						<?php
 						if( strpos($section_cat_id, ',') !== false ) {
 							 $section_cat_id = explode(',' ,$section_cat_id);
 						}
 						
-						if(count($section_cat_id) > 1){
-							$args = array(
-								'post_type' => 'post',
-								'post_status ' => 'publish',
-								'posts_per_page' => intval($max_posts),
-								'order'=> 'ASC',
-								'orderby'=>'ID',
-								'tax_query' => array(
-									array(
-										'taxonomy' => 'category',
-										'terms' => array($section_cat_id[0]),
-										'field' => 'term_id',
-										'operator' => 'IN'
-									)
-								),
-							);
-							$wp_query = new WP_Query($args);
-						}
-
-
-							
-							
-							if ( $wp_query->have_posts() ):
-							while ( $wp_query->have_posts() ) : $wp_query->the_post();
-							global $post;
-							$slug = $post->post_name;
-							$fimage = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' );
-							if ( !empty( $fimage ) ){
-								$f_img = $fimage[0];
-							} else {
-								$f_img = "https://via.placeholder.com/265x150.png?text=Placeholder+Image";
+						$queried_posts = array();
+						if(is_array($section_cat_id) && count($section_cat_id) > 1){
+								foreach($section_cat_id as $cat_id){
+									$args = array(
+									'post_type' => 'post',
+									'post_status ' => 'publish',
+									'posts_per_page' => intval($max_posts),
+									'order'=> 'DESC',
+									'orderby'=>'ID',
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'category',
+											'terms' => array($cat_id),
+											'field' => 'term_id',
+											'operator' => 'IN'
+										)
+									),
+								);
+									$wp_chck_query = new WP_Query($args);
+									
+									if($wp_chck_query->found_posts > 0){
+										if(count($queried_posts) !== intval($max_posts)){
+											//array_merge($queried_posts,$wp_chck_query->posts); 
+											$queried_posts = $queried_posts + $wp_chck_query->posts;
+										}
+									}
+									
+								}
+							}else{ 
+								$args = array(
+									'post_type' => 'post',
+									'post_status ' => 'publish',
+									'posts_per_page' => intval($max_posts),
+									'order'=> 'DESC',
+									'orderby'=>'ID',
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'category',
+											'terms' => array($section_cat_id[0]),
+											'field' => 'term_id',
+											'operator' => 'IN'
+										)
+									),
+								);
+								$wp_query = new WP_Query($args);
+								$queried_posts = $queried_posts + $wp_query->posts;
 							}
+
+
+							if(!empty($queried_posts)){ ?>
+								<div class="mlp-post-slider row">
+								<?php 
+								foreach($queried_posts as $queried_post){
+									$fimage = wp_get_attachment_image_src(get_post_thumbnail_id($queried_post->ID) , 'full');
+									if (!empty($fimage))
+									{
+										$f_img = $fimage[0];
+									}
+									else
+									{
+										$f_img = "https://via.placeholder.com/265x150.png?text=Placeholder+Image";
+									}
 						?>
-						<div class="col-xs-12 col-sm-3 col-md-3">
-							<div class="mlp-post-img">
-								<a href="<?php echo get_permalink(); ?>">
-									<img src="<?php echo $f_img; ?>">
-								</a>
-							</div>
-							<div class="mlp-post-title">
-								<a href="<?php echo get_permalink(); ?>">
-									<?php echo get_the_title(); ?>
-								</a>
-								<p>
-								<i class="fa fa-calendar" aria-hidden="true"></i>
-								<span class="post-published-date"><?php echo get_the_date(); ?></span></p>
-							</div>
-							<!---<div class="mlp-post-link">
-								<a href="<?php //echo get_permalink(); ?>">Read More</a>
-							</div>---->
-						</div>
-						<?php endwhile; ?>
-						<?php endif; ?>
+									<div class="col-xs-12 col-sm-3 col-md-3">
+										<div class="mlp-post-img">
+											<a href="<?php echo get_permalink($queried_post->ID); ?>">
+												<img src="<?php echo $f_img; ?>">
+											</a>
+										</div>
+										<div class="mlp-post-title">
+											<a href="<?php echo get_permalink($queried_post->ID); ?>">
+												<?php echo $queried_post->post_title;?>
+											</a>
+											<p>
+											<i class="fa fa-calendar" aria-hidden="true"></i>
+											<span class="post-published-date"><?php echo get_the_date(get_option( 'date_format' ), $queried_post->ID); ?></span></p>
+										</div>
+										<!---<div class="mlp-post-link">
+											<a href="<?php //echo get_permalink(); ?>">Read More</a>
+										</div>---->
+									</div>
+								<?php } ?>
+								</div>
+							<?php } else {?>
+							 <p>No Posts to show. Please add some post against category for this section</p>
+							<?php } ?>
 						<?php wp_reset_postdata(); ?>
-					</div>
+					
 				</div>
 			</section>
 	<?php } ?>

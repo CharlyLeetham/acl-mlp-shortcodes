@@ -236,4 +236,23 @@ function acl_mlp_custom_scripts() {
 add_action( 'wp_enqueue_scripts', 'acl_mlp_custom_scripts' );
 
 
+function get_post_categories($post_id){
+
+	$category_detail = get_the_category($post_id, 'category');//$post->ID
+	$posts_cat_arr =  array();
+	if(!empty($category_detail)){
+		foreach($category_detail as $cd){
+		 array_push($posts_cat_arr,$cd->cat_name);
+		}
+		$post_cat = implode(", ",$posts_cat_arr);
+	}else{
+		$post_cat = "";
+	}
+	
+	
+
+	return $post_cat;
+}
+
+
 
