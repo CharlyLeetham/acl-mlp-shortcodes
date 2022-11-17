@@ -81,7 +81,7 @@ if(!empty($section_cat_id)){
 		}
 		$queried_posts = array();
 		if(is_array($section_cat_id) && count($section_cat_id) > 1){
-			
+
 				foreach($section_cat_id as $cat_id){
 					$args = array(
 						'post_type' => 'post',
@@ -99,17 +99,17 @@ if(!empty($section_cat_id)){
 						) ,
 					);
 					$wp_chck_query = new WP_Query($args);
-					
+
 					if($wp_chck_query->found_posts > 0){
 						if(count($queried_posts) !== 2){
-							//array_merge($queried_posts,$wp_chck_query->posts); 
+							//array_merge($queried_posts,$wp_chck_query->posts);
 							$queried_posts = $queried_posts + $wp_chck_query->posts;
 						}
 					}
-					
+
 				}
-			}else{ 
-			
+			}else{
+
 				$args = array(
 					'post_type' => 'post',
 					'post_status ' => 'publish',
@@ -128,7 +128,7 @@ if(!empty($section_cat_id)){
 				$wp_query = new WP_Query($args);
 				$queried_posts = $queried_posts + $wp_query->posts;
 			}
-			
+
 			if(!empty($queried_posts)){
 			foreach($queried_posts as $queried_post){
 				$fimage = wp_get_attachment_image_src(get_post_thumbnail_id($queried_post->ID) , 'full');
@@ -160,18 +160,14 @@ if(!empty($section_cat_id)){
 								<a class="raven-post-meta-item raven-post-date" href="<?php echo get_month_link('', ''); ?>" rel="bookmark">
 									<?php echo get_the_date(get_option( 'date_format' ), $queried_post->ID); ?>
 								</a>
-								<span class="raven-post-meta-divider">/</span>
-								<span class="raven-post-meta-item raven-post-categories">
-									<a href="" rel="tag"><?php echo get_post_categories($queried_post->ID); ?></a>
-								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
 								<?php //echo $queried_post->post_excerpt; ?>
 								<?php
-								$old_content = get_the_content();
+								$old_content = get_the_content( $queried_post->ID );
 								$new_content = wp_strip_all_tags( $old_content );
 								$new_content = strip_shortcodes( $new_content );
-								echo wp_trim_words( $new_content, 40 ); ?>                
+								echo wp_trim_words( $new_content, 40 ); ?>
 							</div>
 							<div class="mylocalpages-post-read-more">
 								<a class="mylocalpages-post-button" href="<?php echo get_the_permalink($queried_post->ID); ?>">
