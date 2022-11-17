@@ -143,8 +143,11 @@ if(!empty($section_cat_id)){
 
 		?>
 				<div class="col-md-6">
-					<div class="col-md-12">
-						<img src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
+					<div class="col-md-12 raven-post-image-wrap">
+						<a class="raven-post-image raven-image-fit" href="<?php echo get_the_permalink(); ?>">
+							<img fifu-featured="1" src="<?php  echo $f_img; ?>" alt="<?php echo get_the_title(); ?>">
+							<span class="raven-post-image-overlay"></span>
+						</a>
 					</div>
 					<div class="col-md-12 <?php  echo $queried_post->ID; ?>">
 						<div class="mylocalpages-post-content">
@@ -154,7 +157,7 @@ if(!empty($section_cat_id)){
 								</a>
 							</h3>
 							<div class="mylocalpages-post-meta">
-								<a class="raven-post-meta-item raven-post-date" href="#" rel="bookmark">
+								<a class="raven-post-meta-item raven-post-date" href="<?php echo get_month_link('', ''); ?>" rel="bookmark">
 									<?php echo get_the_date(get_option( 'date_format' ), $queried_post->ID); ?>
 								</a>
 								<span class="raven-post-meta-divider">/</span>
@@ -163,7 +166,12 @@ if(!empty($section_cat_id)){
 								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
-								<?php echo $queried_post->post_excerpt; ?>
+								<?php //echo $queried_post->post_excerpt; ?>
+								<?php
+								$old_content = get_the_content();
+								$new_content = wp_strip_all_tags( $old_content );
+								$new_content = strip_shortcodes( $new_content );
+								echo wp_trim_words( $new_content, 40 ); ?>                
 							</div>
 							<div class="mylocalpages-post-read-more">
 								<a class="mylocalpages-post-button" href="<?php echo get_the_permalink($queried_post->ID); ?>">

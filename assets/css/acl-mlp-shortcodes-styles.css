@@ -15,7 +15,7 @@ h1.mlp-titlearea {
 	text-align: center;
 }
 .mylocalpages-post-content{
-	
+
 }
 .mylocalpages-post-title {
     font-family: "Roboto", Sans-serif;
@@ -52,6 +52,7 @@ a.raven-post-title-link {
     line-height: 16px;
     color: #7a7a7a;
     font-weight: 400;
+    word-wrap: break-word; 
 }
 .mylocalpages-post-button {
     color: #000;

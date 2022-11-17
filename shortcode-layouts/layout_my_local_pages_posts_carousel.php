@@ -7,6 +7,7 @@
 
 ?>
 			<style>
+
 			.slick-dots li button{
 				box-shadow: none !important;
 			}
@@ -26,8 +27,9 @@
 			}
 			.mlp-post-img img {
 				width: 100%;
+        height: 200px;
 			}
-      
+
 			.slick-dots li {
 				width: 25px !important;
 				height: 25px !important;
@@ -65,6 +67,13 @@
 				stroke: none;
 				fill: #777;
 			}
+
+      .col-md-3.slick-thumb {
+        padding-right: 0;
+        padding-left: 0;
+        margin-right: 3px;
+      }
+
 			</style>
 			<section class="mlp-post-section">
 				<div class="mlp-post-container">
@@ -122,7 +131,6 @@
 								$queried_posts = $queried_posts + $wp_query->posts;
 							}
 
-
 							if(!empty($queried_posts)){ ?>
 								<div class="mlp-post-slider row">
 								<?php 
@@ -137,13 +145,15 @@
 										$f_img = "https://via.placeholder.com/265x150.png?text=Placeholder+Image";
 									}
 						?>
-									<div class="col-xs-12 col-sm-3 col-md-3">
-										<div class="mlp-post-img">
-											<a href="<?php echo get_permalink($queried_post->ID); ?>">
-												<img src="<?php echo $f_img; ?>">
-											</a>
+                  
+                <div class="col-xs-12 col-sm-3 col-md-3 slick-thumb">
+                    <div class="mlp-post-img <?php echo $queried_post->ID; ?> raven-post-image-wrap">    
+                        <a href="<?php echo get_permalink($queried_post->ID); ?>" class="raven-post-image raven-image-fit">
+                          <img src="<?php echo $f_img; ?>">
+                          <span class="raven-post-image-overlay"></span>                        
+                        </a>
 										</div>
-										<div class="mlp-post-title">
+										<div class="mlp-post-title <?php echo $queried_post->ID; ?>">
 											<a href="<?php echo get_permalink($queried_post->ID); ?>">
 												<?php echo $queried_post->post_title;?>
 											</a>

@@ -93,7 +93,7 @@ if(!empty($section_cat_id)){
 					}
 					
 				}
-			}else{ 
+			} else { 
 			
 				$args = array(
 					'post_type' => 'post',
@@ -110,7 +110,7 @@ if(!empty($section_cat_id)){
 						)
 					) ,
 				);
-				$wp_query = new WP_Query($args);
+				$wp_query = new WP_Query( $args );
 				$queried_posts = $queried_posts + $wp_query->posts;
 				//array_push($queried_posts, $wp_query->posts[0]);
 				
@@ -132,9 +132,12 @@ if(!empty($section_cat_id)){
 				}
 	?>
 			<div class="col-md-3 ">
-				<div class="mlp-post-grid">
-					<div class="col-md-12">
-						<img src="<?php  echo $f_img; ?>" alt="<?php echo $queried_post->post_title; ?>">
+          <div class="mlp-post-grid raven-post elementor-animation-grow">
+					  <div class="col-md-12 raven-post-image-wrap">
+              <a class="raven-post-image raven-image-fit" href="<?php echo get_the_permalink($queried_post->ID); ?>">
+						    <img src="<?php  echo $f_img; ?>" alt="<?php echo $queried_post->post_title; ?>">
+                <span class="raven-post-image-overlay"></span>    
+              </a>  
 					</div>
 					<div class="col-md-12 <?php  echo $queried_post->ID; ?>">
 						<div class="mylocalpages-post-content">
@@ -144,17 +147,36 @@ if(!empty($section_cat_id)){
 								</a>
 							</h3>
 							<div class="mylocalpages-post-meta">
-								<a class="raven-post-meta-item raven-post-date" href="#" rel="bookmark">
-									<?php //echo get_the_date($queried_post->ID); ?>
+								<a class="raven-post-meta-item raven-post-date" href="<?php echo get_month_link('', ''); ?>" rel="bookmark">
 									<?php echo get_the_date(get_option( 'date_format' ), $queried_post->ID); ?>
 								</a>
 								<span class="raven-post-meta-divider">/</span>
 								<span class="raven-post-meta-item raven-post-categories">
+                  <?php 
+                  $debug = false;
+                  if ($debug) { 
+                  ?>
 									<a href="" rel="tag"><?php echo get_post_categories($queried_post->ID); ?></a>
+                  <?php
+                  }
+                  ?>
+									<a href="" rel="tag"><?php
+											$acl_categories = get_the_category( $queried_post->ID );
+											foreach($acl_categories as $acl_category){
+												echo $acl_category->name;
+											}
+									 ?></a>                  
 								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
 								<?php echo $queried_post->post_excerpt; ?>
+							</div>
+							<div class="mylocalpages-post-excerpt">
+								<?php
+								$old_content = get_the_content();
+								$new_content = wp_strip_all_tags( $old_content );
+								$new_content = strip_shortcodes( $new_content );
+								echo wp_trim_words( $new_content, 40 ); ?>
 							</div>
 							<div class="mylocalpages-post-read-more">
 								<a class="mylocalpages-post-button" href="<?php echo get_the_permalink($queried_post->ID); ?>">
