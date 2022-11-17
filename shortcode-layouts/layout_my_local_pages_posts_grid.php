@@ -61,11 +61,11 @@ if(!empty($section_cat_id)){
 	if( strpos($section_cat_id, ',') !== false ) {
 		$section_cat_id = explode(',' ,$section_cat_id);
 	}
-	
+
 		$queried_posts = array();
-		
+
 		if(is_array($section_cat_id)&& count($section_cat_id) > 1){
-			
+
 				foreach($section_cat_id as $cat_id){
 					$args = array(
 						'post_type' => 'post',
@@ -83,18 +83,18 @@ if(!empty($section_cat_id)){
 						) ,
 					);
 					$wp_chck_query = new WP_Query($args);
-					
+
 					if($wp_chck_query->found_posts > 0){
 						//echo "Post Found for category".$cat_id. 'is' .$wp_chck_query->found_posts;
 						if(count($queried_posts) !== intval($max_posts)){
-							//array_merge($queried_posts,$wp_chck_query->posts); 
+							//array_merge($queried_posts,$wp_chck_query->posts);
 							$queried_posts = $queried_posts + $wp_chck_query->posts;
 						}
 					}
-					
+
 				}
-			} else { 
-			
+			} else {
+
 				$args = array(
 					'post_type' => 'post',
 					'post_status ' => 'publish',
@@ -113,9 +113,9 @@ if(!empty($section_cat_id)){
 				$wp_query = new WP_Query( $args );
 				$queried_posts = $queried_posts + $wp_query->posts;
 				//array_push($queried_posts, $wp_query->posts[0]);
-				
+
 			}
-		
+
 		/* echo "<pre>";
 		print_r($queried_posts);
 		exit; */
@@ -136,8 +136,8 @@ if(!empty($section_cat_id)){
 					  <div class="col-md-12 raven-post-image-wrap">
               <a class="raven-post-image raven-image-fit" href="<?php echo get_the_permalink($queried_post->ID); ?>">
 						    <img src="<?php  echo $f_img; ?>" alt="<?php echo $queried_post->post_title; ?>">
-                <span class="raven-post-image-overlay"></span>    
-              </a>  
+                <span class="raven-post-image-overlay"></span>
+              </a>
 					</div>
 					<div class="col-md-12 <?php  echo $queried_post->ID; ?>">
 						<div class="mylocalpages-post-content">
@@ -152,9 +152,9 @@ if(!empty($section_cat_id)){
 								</a>
 								<span class="raven-post-meta-divider">/</span>
 								<span class="raven-post-meta-item raven-post-categories">
-                  <?php 
+                  <?php
                   $debug = false;
-                  if ($debug) { 
+                  if ($debug) {
                   ?>
 									<a href="" rel="tag"><?php echo get_post_categories($queried_post->ID); ?></a>
                   <?php
@@ -165,7 +165,7 @@ if(!empty($section_cat_id)){
 											foreach($acl_categories as $acl_category){
 												echo $acl_category->name;
 											}
-									 ?></a>                  
+									 ?></a>
 								</span>
 							</div>
 							<div class="mylocalpages-post-excerpt">
@@ -173,7 +173,7 @@ if(!empty($section_cat_id)){
 							</div>
 							<div class="mylocalpages-post-excerpt">
 								<?php
-								$old_content = get_the_content();
+								$old_content = $queried_post->post_content;
 								$new_content = wp_strip_all_tags( $old_content );
 								$new_content = strip_shortcodes( $new_content );
 								echo wp_trim_words( $new_content, 40 ); ?>
