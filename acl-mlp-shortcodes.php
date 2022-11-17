@@ -3,13 +3,14 @@
 Plugin Name: ACL MLP Shortcodes
 Plugin URI: http://askcharlyleetham.com
 Description: Shortcode query to use with Elementor to display dynamic templates
-Version: 1.0
+Version: 1.1
 Author: Sam
 Author URI: http://askcharlyleetham.com
 License: GPL
 
 Changelog
 Version 1.0 - Original Version
+Version 1.1 - When multiple categories are provided, the subsequent categories are only queried if there are insufficient posts in the first categories.
 */
 
 
@@ -34,9 +35,9 @@ function acl_my_local_pages_posts_callback( $atts ){
     $crnt_zipcode = $_GET['zip']; //get zipcode from url
     $zipcode_records = get_option( 'zipcodes_rec' ); //get all zipcode records
     $crrent_zipcode_data = $zipcode_records[$crnt_zipcode]; //get crrent zipcode section data
-		$title_area = $crrent_zipcode_data['Title Area']; //get crrent state
-		$state_name = $crrent_zipcode_data['State']; //get crrent state
-		$section_cat_id = $crrent_zipcode_data[$section]; //get crrent section cat id
+	$title_area = $crrent_zipcode_data['Title Area']; //get crrent state
+	$state_name = $crrent_zipcode_data['State']; //get crrent state
+	$section_cat_id = $crrent_zipcode_data[$section]; //get crrent section cat id
 
 
 		if ( $section == 'Title Area' ) {
@@ -234,3 +235,25 @@ function acl_mlp_custom_scripts() {
 
       }
 add_action( 'wp_enqueue_scripts', 'acl_mlp_custom_scripts' );
+
+
+function get_post_categories($post_id){
+
+	$category_detail = get_the_category($post_id, 'category');//$post->ID
+	$posts_cat_arr =  array();
+	if(!empty($category_detail)){
+		foreach($category_detail as $cd){
+		 array_push($posts_cat_arr,$cd->cat_name);
+		}
+		$post_cat = implode(", ",$posts_cat_arr);
+	}else{
+		$post_cat = "";
+	}
+	
+	
+
+	return $post_cat;
+}
+
+
+
