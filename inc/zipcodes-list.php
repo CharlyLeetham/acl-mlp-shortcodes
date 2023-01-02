@@ -28,6 +28,7 @@ tr:nth-child(even) {
 			<th>Title Area</th>
 			<th>State</th>
 			<th>Postcode</th>
+			<th>Banner Url</th>
 			<th>Section 1</th>
 			<th>Section 2</th>
 			<th>Section 3</th>
@@ -55,6 +56,7 @@ tr:nth-child(even) {
 			<td><?php echo $zipcode_record['Title Area']; ?></td>
 			<td><?php echo $zipcode_record['State']; ?></td>
 			<td><?php echo $zipcode_record['Postcode']; ?></td>
+			<td><?php echo $zipcode_record['Banner Url']; ?></td>
 			<td><?php echo $zipcode_record['Section 1']; ?></td>
 			<td><?php echo $zipcode_record['Section 2']; ?></td>
 			<td><?php echo $zipcode_record['Section 3']; ?></td>

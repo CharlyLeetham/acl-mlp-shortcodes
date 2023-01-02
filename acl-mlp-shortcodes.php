@@ -38,11 +38,15 @@ function acl_my_local_pages_posts_callback( $atts ){
     $crrent_zipcode_data = $zipcode_records[$crnt_zipcode]; //get crrent zipcode section data
 	$title_area = $crrent_zipcode_data['Title Area']; //get crrent state
 	$state_name = $crrent_zipcode_data['State']; //get crrent state
+	$banner_url = $crrent_zipcode_data['Banner Url']; //get crrent state
 	$section_cat_id = $crrent_zipcode_data[$section]; //get crrent section cat id
 
 
 		if ( $section == 'Title Area' ) {
-			return  '<h1 class="elementor-heading-title elementor-size-default mlp-titlearea">My Local '.$crnt_zipcode.' - '.$title_area.' Region</h1>';
+			//return  '<h1 class="elementor-heading-title elementor-size-default mlp-titlearea">My Local '.$crnt_zipcode.' - '.$title_area.' Region</h1>';
+			ob_start(  );
+            require( 'shortcode-layouts/layout_my_local_title-area.php' );
+            return ob_get_clean();
 		}
 
 
